@@ -1,0 +1,32 @@
+{
+    "name": "tricae/dto-marketplace",
+    "description": "Context objects to handle marketplace actions",
+    "keywords": ["dafiti", "tricae", "kanui"],
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "tricae/dto-context": "0.1.6",
+        "tricae/dto-url": "0.1.2"
+    },
+    "require-dev": {
+        "phploc/phploc": "@stable",
+        "sebastian/phpcpd": "@stable",
+        "pdepend/pdepend" : "@stable",
+        "phpunit/phpunit": "@stable",
+        "phpunit/php-invoker": "@stable",
+        "phpmd/phpmd" : "@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit --colors=always -c tests/ || true",
+        "coverage": "./vendor/bin/phpunit --colors=always -c tests/ --coverage-text || true",
+        "md": "./vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode || true",
+        "cs": "./vendor/bin/phpcs --standard=PSR2 src/ || true",
+        "fix-cs": "./vendor/bin/phpcbf --standard=PSR2 src/ || true"
+    },
+    "autoload": {
+        "psr-4": {
+            "DTOMarketplace\\": ["src/DTOMarketplace/", "tests/unit/src/DTOMarketplace"]
+        }
+    }
+}

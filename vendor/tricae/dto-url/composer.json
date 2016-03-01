@@ -1,0 +1,30 @@
+{
+    "name": "tricae/dto-url",
+    "description": "Library to handle and wrap URL informations",
+    "keywords": ["dafiti", "tricae", "kanui"],
+    "type": "library",
+    "require": {
+        "tricae/dto-context": "0.1.6"
+    },
+    "require-dev": {
+        "phploc/phploc": "@stable",
+        "sebastian/phpcpd": "@stable",
+        "pdepend/pdepend" : "@stable",
+        "phpunit/phpunit": "@stable",
+        "phpunit/php-invoker": "@stable",
+        "phpmd/phpmd" : "@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit --colors=always -c tests/ || true",
+        "coverage": "./vendor/bin/phpunit --colors=always -c tests/ --coverage-text || true",
+        "md": "./vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode || true",
+        "cs": "./vendor/bin/phpcs --standard=PSR2 src/ || true",
+        "fix-cs": "./vendor/bin/phpcbf --standard=PSR2 src/ || true"
+    },
+    "autoload": {
+        "psr-4": {
+            "Url\\": ["src/Url", "tests/unit/src/Url"]
+        }
+    }
+}
