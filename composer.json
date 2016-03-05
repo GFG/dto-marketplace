@@ -5,8 +5,8 @@
     "type": "library",
     "license": "proprietary",
     "require": {
-        "tricae/dto-context": "0.1.6",
-        "tricae/dto-url": "0.1.2"
+        "tricae/dto-context": "0.1.7",
+        "tricae/dto-url": "0.1.3"
     },
     "require-dev": {
         "phploc/phploc": "@stable",
