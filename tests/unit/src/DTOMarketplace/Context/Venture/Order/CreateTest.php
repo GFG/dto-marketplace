@@ -10,16 +10,16 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order', $this);
         $this->context = new Create($this->dw);
     } 
 
     public function testExportContextData()
     {
-        $customer        = t::mock('DTOMarketplace\DataWrapper\Customer');
-        $shippingAddress = t::mock('DTOMarketplace\DataWrapper\Order\Address');
-        $billingAddress  = t::mock('DTOMarketplace\DataWrapper\Order\Address');
-        $item            = t::mock('DTOMarketplace\DataWrapper\Order\Item');
+        $customer        = t::mock('DTOMarketplace\DataWrapper\Customer', $this);
+        $shippingAddress = t::mock('DTOMarketplace\DataWrapper\Order\Address', $this);
+        $billingAddress  = t::mock('DTOMarketplace\DataWrapper\Order\Address', $this);
+        $item            = t::mock('DTOMarketplace\DataWrapper\Order\Item', $this);
 
         //data
         $hash           = 'hash';
@@ -63,7 +63,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $birthday               = '1990-01-01';
 
         $exportedData   = [
-            'name' => 'iris.context.venture.order.create',
+            'name' => 'dtomarketplace.context.venture.order.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [

@@ -6,6 +6,12 @@ use DTOMarketplace\Context\BaseInContext;
 
 class Create extends BaseInContext
 {
+
+    public function getHttpMethod()
+    {
+        return 'post';
+    }
+
     /**
      * {@inheritdoc}
      */

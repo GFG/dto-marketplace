@@ -37,7 +37,7 @@ abstract class BaseOutContext extends Base
             array_slice(explode('\\', static::class), 2)
         );
 
-        return ['httpMethod' => $this->getHttpMethod(), 'path' => $paths];
+        return ['httpMethod' => $this->getHttpMethod(), 'path' => $path];
     }
 
     /**

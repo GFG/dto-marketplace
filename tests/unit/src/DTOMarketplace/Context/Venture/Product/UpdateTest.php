@@ -13,6 +13,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
             ->setMethods([
                 'getSkuConfig',       
                 'getSimpleCollection',    
+                'getImageCollection',    
                 'getName',     
                 'getDescription',
                 'getBrand',       
@@ -36,6 +37,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $info             = null;
         $skuConfig        = 'sku config';
         $simpleCollection = [];
+        $imageCollection  = [];
         $name             = 'Product name';
         $description      = 'Description';
         $brand            = 'Brand';
@@ -43,7 +45,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $attributeSet     = 2;
         $status           = 'active'; 
         $exportedData     = [
-            'name' => 'iris.context.venture.product.update',
+            'name' => 'dtomarketplace.context.venture.product.update',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [

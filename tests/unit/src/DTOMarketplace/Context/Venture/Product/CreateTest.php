@@ -11,7 +11,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Catalog\Config');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Catalog\Config', $this);
         $this->context = new Create($this->dw);
     } 
 
@@ -22,8 +22,8 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $simple           = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple');
-        $image            = t::mock('DTOMarketplace\DataWrapper\Catalog\Image');
+        $simple           = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
+        $image            = t::mock('DTOMarketplace\DataWrapper\Catalog\Image', $this);
 
         //data
         $info             = null;
@@ -51,11 +51,11 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $ean             = 'ean';
 
         $exportedData     = [
-            'name' => 'iris.context.venture.product.create',
+            'name' => 'dtomarketplace.context.venture.product.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
-                'sku_config'        => $skuConfig,
+                'sku_config'        => $sku,
                 'simple_collection' => $simpleCollection
             ]
         ];

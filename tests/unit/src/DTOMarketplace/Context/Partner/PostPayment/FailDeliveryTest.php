@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\PostPayment;
 
-class FailedDeliveredTest extends \PHPUnit_Framework_TestCase
+class FailDeliveryTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
@@ -18,7 +18,7 @@ class FailedDeliveredTest extends \PHPUnit_Framework_TestCase
                 'toArray'])
             ->getMock();
 
-        $this->context = new FailedDelivery($this->dw);
+        $this->context = new FailDelivery($this->dw);
     } 
 
     public function testExportContextData()
@@ -31,7 +31,7 @@ class FailedDeliveredTest extends \PHPUnit_Framework_TestCase
         $reasonDetail = 'reason detail';
 
         $exportedData       = [
-            'name' => 'iris.context.partner.postpayment.faileddelivery',
+            'name' => 'dtomarketplace.context.partner.postpayment.faildelivery',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
@@ -47,6 +47,8 @@ class FailedDeliveredTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getReason')->willReturn($reason);
         $this->dw->method('getReasonDetail')->willReturn($reasonDetail);
 
-        $this->assertSame($exportedData, $this->context->exportContextData());
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }

@@ -11,12 +11,19 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
     {
         $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
             ->setMethods([
-                'getSkuConfig',       
+                'getSku',       
                 'getPrice',       
                 'getSpecialPrice',       
                 'getSpecialFromDate',       
                 'getSpecialToDate',       
                 'getSimpleCollection',       
+                'toArray'
+            ])
+            ->getMock();
+
+        $this->dwSimple = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
+            ->setMethods([
+                'getSku',
                 'toArray'
             ])
             ->getMock();
@@ -33,29 +40,35 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
     {
         $info             = null;
         $skuConfig        = 'sku config';
+        $skuSimple        = 'sku simple';
         $price            = 100.00;
         $specialPrice     = 50.00;
         $specialFromDate  = '2016-01-01 00:00:01';
         $specialToDate    = '2016-02-01 00:00:01';
-        $simpleCollection = [];
+        $simpleCollection = ['sku' => $skuSimple];
         $exportedData = [
-            'name' => 'iris.context.venture.product.updateprice',
+            'name' => 'dtomarketplace.context.venture.product.updateprice',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
-                'sku_config'        => $skuConfig,
+                'sku'               => $skuConfig,
                 'price'             => $price,
-                'special_price'      => $specialPrice,
+                'special_price'     => $specialPrice,
                 'special_from_date' => $specialFromDate,
                 'special_to_date'   => $specialToDate,
-                'simple_collection' => $simpleCollection,
+                'simple_collection' => [$simpleCollection]
             ]
         ];
 
         $this->dw
             ->expects($this->once())
-            ->method('getSkuConfig')
+            ->method('getSku')
             ->willReturn($skuConfig);
+
+        $this->dwSimple
+            ->expects($this->once())
+            ->method('getSku')
+            ->willReturn($skuSimple);
 
         $this->dw
             ->expects($this->once())
@@ -80,11 +93,14 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $this->dw
             ->expects($this->once())
             ->method('getSimpleCollection')
-            ->willReturn($simpleCollection);
+            ->willReturn([$this->dwSimple]);
 
-        $this->assertSame(
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+
+        $this->assertEquals(
             $exportedData,
-            $this->context->exportContextData()
+            $export
         );
     }
 }

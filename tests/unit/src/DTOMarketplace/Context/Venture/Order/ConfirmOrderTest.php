@@ -26,7 +26,6 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
         $salesOrderId   = 1;
         $sku            = 'sku';
         $orderNr        = 'order nr';
-        $price          = 100.00;               
         $ventureOrderNr = 'venture order nr';
         $status         = 'active';
         $reason         = 'reason';
@@ -42,7 +41,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
         $item->method('getReasonDetail')->willReturn($reasonDetail);
 
         $exportedData = [
-            'name' => 'iris.context.venture.order.confirmorder',
+            'name' => 'dtomarketplace.context.venture.order.confirmorder',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
@@ -53,10 +52,9 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
                 'reason_detail'    => $reasonDetail,
                 'item_collection'  => [
                     [
-                        'id_sales_order_item' => $salesOrderId,
+                        'venture_id'          => $salesOrderId,
                         'sku'                 => $sku,
                         'status'              => $status,
-                        'price'               => $price,
                         'reason'              => $reason,
                         'reason_detail'       => $reasonDetail
                     ]
@@ -71,6 +69,8 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getReasonDetail')->willReturn($reasonDetail);
         $this->dw->method('getItemCollection')->willReturn([$item]);
 
-        $this->assertSame($exportedData, $this->context->exportContextData());
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }

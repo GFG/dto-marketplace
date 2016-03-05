@@ -11,7 +11,7 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order', $this);
         $this->context = new ConfirmPayment($this->dw);
     } 
 
@@ -20,7 +20,7 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
         $info           = null;
         $ventureOrderNr = 'venture order nr';
         $exportedData = [
-            'name' => 'iris.context.venture.order.confirmpayment',
+            'name' => 'dtomarketplace.context.venture.order.confirmpayment',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [

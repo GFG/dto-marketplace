@@ -11,13 +11,13 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('Context\DataWrapper\DataWrapperInterface');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Catalog\Config', $this);
         $this->context = new UpdateStock($this->dw);
     } 
 
     public function testExportContextData()
     {
-        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple');
+        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
 
         $info             = null;
         $partnerSku       = 'partner sku';

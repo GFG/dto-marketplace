@@ -11,6 +11,6 @@ class ItemCollection extends BaseCollection
      */
     public function getType()
     {
-        return  'DTOMarketplace\DataWrapper\Order\Order\Item';
+        return  'DTOMarketplace\DataWrapper\Order\Item';
     }
 }

@@ -4,15 +4,15 @@ namespace DTOMarketplace\Context\Venture\PostPayment;
 
 use DTOMarketplace\DataWrapper\Mock as t;
 
-class ShippedTest extends \PHPUnit_Framework_TestCase
+class ShipTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment');
-        $this->context = new Shipped($this->dw);
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment', $this);
+        $this->context = new Ship($this->dw);
     } 
 
     public function testGetUrlParts()
@@ -34,7 +34,7 @@ class ShippedTest extends \PHPUnit_Framework_TestCase
         $ventureOrderItemId = 321;
 
         $exportedData       = [
-            'name' => 'iris.context.venture.postpayment.shipped',
+            'name' => 'dtomarketplace.context.venture.postpayment.ship',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
@@ -43,7 +43,7 @@ class ShippedTest extends \PHPUnit_Framework_TestCase
                 'tracking_code'         => $trackingCode,
                 'tracking_url'          => $trackingUrl,
                 'nfe_key'               => $nfeKey,
-                'venture_order_number'  => $ventureOrderNumber,
+                'venture_order_nr'  => $ventureOrderNr,
                 'partner_code'          => $partnerCode,
                 'venture_order_item_id' => $ventureOrderItemId
             ]
@@ -54,7 +54,7 @@ class ShippedTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getTrackingCode')->willReturn($trackingCode);
         $this->dw->method('getTrackingUrl')->willReturn($trackingUrl);
         $this->dw->method('getNfeKey')->willReturn($nfeKey);
-        $this->dw->method('getVentureOrderNumber')->willReturn($ventureOrderNumber);
+        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNr);
         $this->dw->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
 
         $this->assertSame($exportedData, $this->context->exportContextData());

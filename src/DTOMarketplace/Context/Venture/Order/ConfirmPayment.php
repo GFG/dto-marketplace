@@ -6,6 +6,12 @@ use DTOMarketplace\Context\BaseInContext;
 
 class ConfirmPayment extends BaseInContext
 {
+
+    public function getHttpMethod()
+    {
+        return 'put';
+    }
+
     /**
      * {@inheritdoc}
      */

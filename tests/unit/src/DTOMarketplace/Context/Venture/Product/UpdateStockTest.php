@@ -11,7 +11,15 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
     {
         $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
             ->setMethods([
-                'getSkuSimple',       
+                'getSku',       
+                'getSimpleCollection',       
+                'toArray'
+            ])
+            ->getMock();
+
+        $this->dwSimple = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
+            ->setMethods([
+                'getSku',       
                 'getQuantity',       
                 'toArray'
             ])
@@ -31,28 +39,44 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
         $skuSimple        = 'sku simple';
         $quantity         = 1;
         $exportedData = [
-            'name' => 'iris.context.venture.product.updatestock',
+            'name' => 'dtomarketplace.context.venture.product.updatestock',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
-                'sku_simple' => $skuSimple,
-                'quantity'   => $quantity
+                'sku' => 'sku config',
+                'simple_collection' => [[
+                    'sku' => $skuSimple,
+                    'quantity'   => $quantity
+                ]]
             ]
         ];
 
-        $this->dw
+        $this->dwSimple
             ->expects($this->once())
-            ->method('getSkuSimple')
+            ->method('getSku')
             ->willReturn($skuSimple);
 
-        $this->dw
+        $this->dwSimple
             ->expects($this->once())
             ->method('getQuantity')
             ->willReturn($quantity);
 
+        $this->dw
+            ->expects($this->once())
+            ->method('getSku')
+            ->willReturn('sku config');
+
+        $this->dw
+            ->expects($this->once())
+            ->method('getSimpleCollection')
+            ->willReturn([$this->dwSimple]);
+
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+
         $this->assertSame(
             $exportedData,
-            $this->context->exportContextData()
+            $export
         );
     }
 }

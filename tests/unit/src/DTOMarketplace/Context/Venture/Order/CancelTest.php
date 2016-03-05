@@ -11,7 +11,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order', $this);
         $this->context = new Cancel($this->dw);
     } 
 
@@ -20,7 +20,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
         $info           = null;
         $ventureOrderNr = 'order nr';
         $exportedData   = [
-            'name' => 'iris.context.venture.order.cancel',
+            'name' => 'dtomarketplace.context.venture.order.cancel',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [

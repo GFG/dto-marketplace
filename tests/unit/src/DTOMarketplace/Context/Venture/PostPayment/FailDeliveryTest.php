@@ -4,15 +4,15 @@ namespace DTOMarketplace\Context\Venture\PostPayment;
 
 use DTOMarketplace\DataWrapper\Mock as t;
 
-class FailedDeliveryTest extends \PHPUnit_Framework_TestCase
+class FailDeliveryTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
 
     public function setup()
     {
-        $this->dw      = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment');
-        $this->context = new FailedDelivery($this->dw);
+        $this->dw      = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment', $this);
+        $this->context = new FailDelivery($this->dw);
     } 
 
     public function testGetUrlParts()
@@ -29,11 +29,11 @@ class FailedDeliveryTest extends \PHPUnit_Framework_TestCase
         $reasonDetail       = 'Reason detail';
 
         $exportedData       = [
-            'name' => 'iris.context.venture.postpayment.faileddelivery',
+            'name' => 'dtomarketplace.context.venture.postpayment.faildelivery',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
-                'venture_order_number'  => $ventureOrderNumber,
+                'venture_order_nr'  => $ventureOrderNumber,
                 'venture_order_item_id' => $ventureOrderItemId,
                 'reason'                => $reason,
                 'reason_detail'         => $reasonDetail
@@ -42,9 +42,11 @@ class FailedDeliveryTest extends \PHPUnit_Framework_TestCase
 
         $this->dw->method('getReason')->willReturn($reason);
         $this->dw->method('getReasonDetail')->willReturn($reasonDetail);
-        $this->dw->method('getVentureOrderNumber')->willReturn($ventureOrderNumber);
+        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNumber);
         $this->dw->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
 
-        $this->assertSame($exportedData, $this->context->exportContextData());
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }

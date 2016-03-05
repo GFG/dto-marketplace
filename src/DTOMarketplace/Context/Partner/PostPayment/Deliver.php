@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\PostPayment;
 
-use DTOMarketplace\Context\BaseOutContext;
+use DTOMarketplace\Context\BaseInContext;
 
 class Deliver extends BaseInContext
 {

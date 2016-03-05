@@ -11,15 +11,15 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Config');
+        $this->dw = t::mock('DTOMarketplace\DataWrapper\Config', $this);
         $this->context = new Update($this->dw);
     } 
 
     public function testExportContextData()
     {
         //dataWrappers 
-        $image  = t::mock('DTOMarketplace\DataWrapper\Catalog\Image');         
-        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple');
+        $image  = t::mock('DTOMarketplace\DataWrapper\Catalog\Image', $this);
+        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
 
         //data
         $info             = null;

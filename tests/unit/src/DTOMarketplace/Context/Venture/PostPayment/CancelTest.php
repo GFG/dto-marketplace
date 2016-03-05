@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Venture\PostPayment;
 
-class CanceledTest extends \PHPUnit_Framework_TestCase
+class CancelTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
@@ -20,7 +20,7 @@ class CanceledTest extends \PHPUnit_Framework_TestCase
                 'toArray'])
             ->getMock();
 
-        $this->context = new Canceled($this->dw);
+        $this->context = new Cancel($this->dw);
     } 
 
     public function testGetUrlParts()
@@ -38,7 +38,7 @@ class CanceledTest extends \PHPUnit_Framework_TestCase
         $partnerCode        = 'Partner code';
         $ventureOrderItemId = 321;
         $exportedData       = [
-            'name' => 'iris.context.venture.postpayment.canceled',
+            'name' => 'dtomarketplace.context.venture.postpayment.cancel',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [

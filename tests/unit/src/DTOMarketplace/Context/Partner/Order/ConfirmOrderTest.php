@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\Order;
 
-class BindVentureOrderTest extends \PHPUnit_Framework_TestCase
+class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
@@ -13,7 +13,7 @@ class BindVentureOrderTest extends \PHPUnit_Framework_TestCase
             ->setMethods(['getOrderNr', 'getVentureOrderNr', 'toArray'])
             ->getMock();
 
-        $this->context = new BindVentureOrder($this->dw);
+        $this->context = new ConfirmOrder($this->dw);
     } 
 
     public function testExportContextData()
@@ -23,7 +23,7 @@ class BindVentureOrderTest extends \PHPUnit_Framework_TestCase
         $orderNr        = 123;
         $ventureOrderNr = 321;
         $exportedData   = [
-            'name' => 'iris.context.partner.order.bindventureorder',
+            'name' => 'dtomarketplace.context.partner.order.confirmorder',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
@@ -42,9 +42,8 @@ class BindVentureOrderTest extends \PHPUnit_Framework_TestCase
             ->method('getVentureOrderNr')
             ->willReturn($ventureOrderNr);
 
-        $this->assertSame(
-            $exportedData,
-            $this->context->exportContextData()
-        );
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }

@@ -32,7 +32,7 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
         $ventureOrderNr = 321;
 
         $exportedData   = [
-            'name' => 'iris.context.partner.order.confirmpayment',
+            'name' => 'dtomarketplace.context.partner.order.confirmpayment',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
@@ -41,6 +41,8 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->dw->method('getOrderNr')->willReturn($orderNr);
-        $this->assertSame($exportedData, $this->context->exportContextData());
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }

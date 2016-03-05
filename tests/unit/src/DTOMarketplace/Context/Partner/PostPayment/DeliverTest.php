@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\PostPayment;
 
-class DeliveredTest extends \PHPUnit_Framework_TestCase
+class DeliverTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
     private $context;
@@ -16,7 +16,7 @@ class DeliveredTest extends \PHPUnit_Framework_TestCase
                 'toArray'])
             ->getMock();
 
-        $this->context = new Delivered($this->dw);
+        $this->context = new Deliver($this->dw);
     } 
 
     public function testExportContextData()
@@ -26,11 +26,11 @@ class DeliveredTest extends \PHPUnit_Framework_TestCase
         $orderNr      = 1234;
         $orderItemId  = 4321;
         $exportedData = [
-            'name' => 'iris.context.partner.postpayment.delivered',
+            'name' => 'dtomarketplace.context.partner.postpayment.deliver',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data' => [
-                'venture_order_number' => $ventureOrderNumber,
+                'venture_order_nr' => $orderNr,
                 'partner_code'        => $partnerCode,
                 'venture_order_item_id' => $ventureOrderItemId
             ]
@@ -39,6 +39,8 @@ class DeliveredTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getOrderNr')->willReturn($orderNr);
         $this->dw->method('getOrderItemNr')->willReturn($orderItemId);
 
-        $this->assertSame($exportedData, $this->context->exportContextData());
+        $export = $this->context->exportContextData();
+        unset($export['data_wrapper']);
+        $this->assertSame($exportedData, $export);
     }
 }
