@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Partner\PostPayment;
 
+use Context\DataWrapper\Mock;
+
 class CancelTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,46 +11,53 @@ class CancelTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getOrderNr',
-                'getOrderItemId',
-                'getReason',
-                'getReasonDetail',
-                'toArray'])
-            ->getMock();
-
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\PostPayment',
+            $this
+        );
         $this->context = new Cancel($this->dw);
     } 
 
     public function testExportContextData()
     {
-        $hash         = 'hash';
-        $info         = null;
-        $orderNr      = 1234;
-        $orderItemId  = 4321;
-        $reason       = 'reason';
-        $reasonDetail = 'reason detail';
+        $item               = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\Item', 
+            $this
+        );
+        $hash               = 'hash';
+        $info               = null;
+        $reason             = 'Reason';
+        $reasonDetail       = 'Reason detail';
+        $orderNr     = 1234;
+        $orderItemId = 321;
 
-        $exportedData = [
+        $exportedData       = [
             'name' => 'dtomarketplace.context.partner.postpayment.cancel',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'order_nr'      => $orderNr,
-                'order_item_id' => $orderItemId,
-                'reason'        => $reason,
-                'reason_detail' => $reasonDetail
+                'order_nr' => $orderNr,
+                'item_collection' => [[
+                    'reason'                => $reason,
+                    'reason_detail'         => $reasonDetail,
+                    'order_item_id' => $orderItemId,
+                ]]
             ]
         ];
 
         $this->dw->method('getOrderNr')->willReturn($orderNr);
-        $this->dw->method('getOrderItemId')->willReturn($orderItemId);
-        $this->dw->method('getReason')->willReturn($reason);
-        $this->dw->method('getReasonDetail')->willReturn($reasonDetail);
+        $this->dw->method('getItemCollection')->willReturn([$item]);
 
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-        $this->assertSame($exportedData, $export);
+        $item->method('getReason')->willReturn($reason);
+        $item->method('getReasonDetail')->willReturn($reasonDetail);
+        $item->method('getOrderItemId')->willReturn($orderItemId);
+
+        $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

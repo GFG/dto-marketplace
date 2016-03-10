@@ -2,27 +2,18 @@
 
 namespace DTOMarketplace\Context\Partner\Order;
 
+use Context\DataWrapper\Mock;
+
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
     private $context;
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('DTOMarketplace\DataWrapper\Order\Order')
-            ->setMethods([
-                'toArray',
-                'getItemCollection',
-                'getOrderNr',
-                'getGrandTotal',
-                'getCreatedAt',
-                'getShippingAmount',
-                'getBillingAddress',
-                'getShippingAddress',
-                'getFreightCost',
-                'getCustomer'
-            ])
-            ->getMock();
-
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Order\Order', 
+            $this
+        );
         $this->context = new Create($this->dw);
     } 
 
@@ -31,40 +22,23 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $hash           = 'hash';
         $info           = null;
         $orderNr        = 123;
-        $grandTotal     = 100.0;
         $createdAt      = '2016-01-01 00:00:01';
-        $shippingAmount = 2;
         $address        = 'Rua Direita, 1';
         $freightCost    = 10.00;
         $sku            = 'simple sku';
         $id             = 1;
         $price          = 10.00;
+        $idSalesOrderItem = 1;
 
         //items
-        $item = $this->getMockBuilder('DTOMarketplace\DataWrapper\Order\Order\Item')
-            ->setMethods([
-                'getIdSalesOrderItem',
-                'getSku',
-                'getPrice'
-            ])
-            ->getMock();
-
+        $item = Mock::mock('DTOMarketplace\DataWrapper\Order\Item', $this);
         $item->method('getId')->willReturn($idSalesOrderItem);
         $item->method('getSku')->willReturn($sku);
         $item->method('getPrice')->willReturn($price);
 
         $itemCollection = [$item];
 
-        $expectedItemCollection[] = [
-                'id_sales_order_item' => $idSalesOrderItem,
-                'sku'                 => $sku,
-                'price'               => $price
-            ];
-        //\items
-
         //addresses
-        $firstName    = 'Shipping';
-        $lastName     = 'Address';
         $street       = 'Rua da Glória';
         $streetNumber = '1';
         $complement   = 'Complemento';
@@ -74,24 +48,11 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $regionCode   = 'SP';
         $phone        = '99999-9999';
 
-        $shippingAddressDataWrapper = $this->getMockBuilder('DTOMarketplace\DataWrapper\Order\Order\Address')
-            ->disableOriginalConstructor()
-            ->setMethods([
-                'getFirstName',
-                'getLastName',
-                'getStreet',
-                'getNumber',
-                'getComplement',
-                'getCity',
-                'getPostCode',
-                'getNeighborhood',
-                'getRegionCode',
-                'getPhone',
-            ])
-            ->getMock();
+        $shippingAddressDataWrapper = Mock::mock(
+            'DTOMarketplace\DataWrapper\Order\Address',
+            $this
+        );
 
-        $shippingAddressDataWrapper->method('getFirstName')->willReturn($firstName);
-        $shippingAddressDataWrapper->method('getLastName')->willReturn($lastName);
         $shippingAddressDataWrapper->method('getStreet')->willReturn($street);
         $shippingAddressDataWrapper->method('getNumber')->willReturn($streetNumber);
         $shippingAddressDataWrapper->method('getComplement')->willReturn($complement);
@@ -102,10 +63,8 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $shippingAddressDataWrapper->method('getPhone')->willReturn($phone);
 
         $shippingAddress = [
-            'first_name'    => $firstName,
-            'last_name'     => $lastName,
             'street'        => $street,
-            'street_number' => $streetNumber,
+            'number'        => $streetNumber,
             'complement'    => $complement,
             'city'          => $city,
             'postcode'      => $postCode,
@@ -114,26 +73,11 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             'phone'         => $phone
         ];
 
-        $billingAddressDataWrapper = $this->getMockBuilder('DTOMarketplace\DataWrapper\Order\Order\Address')
-            ->disableOriginalConstructor()
-            ->setMethods([
-                'getFirstName',
-                'getLastName',
-                'getStreet',
-                'getNumber',
-                'getComplement',
-                'getCity',
-                'getPostCode',
-                'getNeighborhood',
-                'getRegionCode',
-                'getPhone',
-            ])
-            ->getMock();
+        $billingAddressDataWrapper = Mock::mock(
+            'DTOMarketplace\DataWrapper\Order\Address',
+            $this
+        );
 
-        $firstName = 'Billing';
-
-        $billingAddressDataWrapper->method('getFirstName')->willReturn($firstName);
-        $billingAddressDataWrapper->method('getLastName')->willReturn($lastName);
         $billingAddressDataWrapper->method('getStreet')->willReturn($street);
         $billingAddressDataWrapper->method('getNumber')->willReturn($streetNumber);
         $billingAddressDataWrapper->method('getComplement')->willReturn($complement);
@@ -144,10 +88,8 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $billingAddressDataWrapper->method('getPhone')->willReturn($phone);
 
         $billingAddress = [
-            'first_name'    => $firstName,
-            'last_name'     => $lastName,
             'street'        => $street,
-            'street_number' => $streetNumber,
+            'number' => $streetNumber,
             'complement'    => $complement,
             'city'          => $city,
             'postcode'      => $postCode,
@@ -186,7 +128,6 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $customerDataWrapper->method('getBirthday')->willReturn($birthday);
 
         $customer = [
-            'id_customer' => $idCustomer,
             'email'       => $email, 
             'first_name'  => $firstName,
             'last_name'   => $lastName,
@@ -196,16 +137,20 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         //\customer
 
         $exportedData   = [
-            'name' => 'iris.context.partner.order.create',
+            'name' => 'dtomarketplace.context.partner.order.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'order_nr'        => $orderNr,
-                'grand_total'     => $grandTotal,
-                'created_at'      => $createdAt,
-                'shipping_amount' => $shippingAmount,
                 'freight_cost'    => $freightCost,
-                'item_collection' => $expectedItemCollection,
+                'item_collection' => [
+                    0 =>[
+                        'id'    => $idSalesOrderItem,
+                        'sku'   => $sku,
+                        'price' => $price
+                    ],
+                ],
                 'customer'        => $customer,
                 'addresses'       => [
                     'shipping' => $shippingAddress, 
@@ -215,18 +160,17 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->dw->method('getOrderNr')->willReturn($orderNr);
-        $this->dw->method('getGrandTotal')->willReturn($grandTotal);
-        $this->dw->method('getCreatedAt')->willReturn($createdAt);
-        $this->dw->method('getShippingAmount')->willReturn($shippingAmount);
+        $this->dw->method('getFreightCost')->willReturn($freightCost);
+        $this->dw->method('getItemCollection')->willReturn($itemCollection);
+        $this->dw->method('getCustomer')->willReturn($customerDataWrapper);
         $this->dw->method('getShippingAddress')->willReturn($shippingAddressDataWrapper);
         $this->dw->method('getBillingAddress')->willReturn($billingAddressDataWrapper);
-        $this->dw->method('getFreightCost')->willReturn($freightCost);
-        $this->dw->method('getCustomer')->willReturn($customerDataWrapper);
-        $this->dw->method('getItemCollection')->willReturn($itemCollection);
 
-        $this->assertSame(
-            $exportedData,
-            $this->context->exportContextData()
-        );
+        $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

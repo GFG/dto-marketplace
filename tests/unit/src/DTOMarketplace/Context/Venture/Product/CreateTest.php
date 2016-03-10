@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Venture\Product;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,10 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Catalog\Config', $this);
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
         $this->context = new Create($this->dw);
     } 
 
@@ -22,40 +25,75 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $simple           = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
-        $image            = t::mock('DTOMarketplace\DataWrapper\Catalog\Image', $this);
+        $simple           = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            $this
+        );
+        $image            = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Image',
+            $this
+        );
 
         //data
         $info             = null;
 
         //config
         $sku             = 'sku config';
+        $skuSimple       = 'sku simple';
         $name            = 'name';
         $description     = 'description';
         $brand           = 'brand'; 
         $price           = 100.00;
+        $quantity        = 1;
+        $ean             = 'ean';
+        $url             = 'http://site.com/image.jpg';
+        $position        = 1;
+        $variation       = 'variation';
         $specialPrice    = 50.00;
         $specialFromDate = '2015-01-01';
         $specialToDate   = '2015-02-01';
         $attributes      = ['attribute1' => 'Attribute'];
-        $attributeSet    = 2;
 
-        //image
-        $url             = 'http://site.com/image.jpg';
-        $position        = 2;
-
-        //simple
         $partnerSku      = 'partner sku';
         $variation       = 'variation';
         $quantity        = 2;
         $ean             = 'ean';
 
+        $attributeSet    = 2;
+        $imageCollection  = [
+            [
+                'url'      => $url,
+                'position' => $position
+            ]
+        ];
+        $simpleCollection = [
+            [
+                'partner_sku' => $partnerSku,
+                'variation' => $variation,
+                'quantity' => $quantity,
+                'ean' => $ean,
+            ]
+        ]; 
+
+
+        //simple
         $exportedData     = [
             'name' => 'dtomarketplace.context.venture.product.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku_config'        => $sku,
+                'sku'               => $sku,
+                'name'              => $name,
+                'description'       => $description,
+                'brand'             => $brand,
+                'price'             => $price,
+                'special_price'     => $specialPrice,
+                'special_from_date' => $specialFromDate,
+                'special_to_date'   => $specialToDate,
+                'attributes'        => $attributes,
+                'attribute_set'     => $attributeSet,
+                'image_collection'  => $imageCollection,
                 'simple_collection' => $simpleCollection
             ]
         ];
@@ -71,7 +109,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getSku')->willReturn($sku);
         $this->dw->method('getName')->willReturn($name);
         $this->dw->method('getDescription')->willReturn($description);
-        $this->dw->method('getbrand')->willReturn($brandj);
+        $this->dw->method('getbrand')->willReturn($brand);
         $this->dw->method('getPrice')->willReturn($price);
         $this->dw->method('getSpecialPrice')->willReturn($specialPrice);
         $this->dw->method('getSpecialFromDate')->willReturn($specialFromDate);

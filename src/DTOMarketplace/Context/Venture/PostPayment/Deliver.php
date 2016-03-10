@@ -20,10 +20,16 @@ class Deliver extends BaseOutContext
     public function exportContextData()
     {
         $dataWrapper = $this->getDataWrapper();
+        $items = [];
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'venture_order_item_id' => $item->getVentureOrderItemId()
+            ];
+        }
 
         return $this->prepareExport([
-            'venture_order_nr'      => $dataWrapper->getVentureOrderNr(),
-            'venture_order_item_id' => $dataWrapper->getVentureOrderItemId()
+            'venture_order_nr' => $dataWrapper->getVentureOrderNr(),
+            'item_collection'  => $items
         ]);
     }
 }

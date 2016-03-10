@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Venture\PostPayment;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class FailDeliveryTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,10 @@ class FailDeliveryTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw      = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment', $this);
+        $this->dw      = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
+            $this
+        );
         $this->context = new FailDelivery($this->dw);
     } 
 
@@ -22,6 +25,10 @@ class FailDeliveryTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
+        $item               = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\Item', 
+            $this
+        );
         $info               = null;
         $ventureOrderNumber = 1234;
         $ventureOrderItemId = 321;
@@ -32,21 +39,24 @@ class FailDeliveryTest extends \PHPUnit_Framework_TestCase
             'name' => 'dtomarketplace.context.venture.postpayment.faildelivery',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'venture_order_nr'  => $ventureOrderNumber,
-                'venture_order_item_id' => $ventureOrderItemId,
-                'reason'                => $reason,
-                'reason_detail'         => $reasonDetail
+                'item_collection' => [[
+                    'reason'                => $reason,
+                    'reason_detail'         => $reasonDetail,
+                    'venture_order_item_id' => $ventureOrderItemId,
+                ]]
             ]
         ];
 
-        $this->dw->method('getReason')->willReturn($reason);
-        $this->dw->method('getReasonDetail')->willReturn($reasonDetail);
-        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNumber);
-        $this->dw->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
+        $item->method('getReason')->willReturn($reason);
+        $item->method('getReasonDetail')->willReturn($reasonDetail);
+        $item->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
 
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-        $this->assertSame($exportedData, $export);
+        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNumber);
+        $this->dw->method('getItemCollection')->willReturn([$item]);
+
+        $this->assertSame($exportedData, $this->context->exportContextData());
     }
 }

@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Venture\Product;
 
+use Context\DataWrapper\Mock;
+
 class UpdateTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,21 +11,10 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getSkuConfig',       
-                'getSimpleCollection',    
-                'getImageCollection',    
-                'getName',     
-                'getDescription',
-                'getBrand',       
-                'getAttributes',
-                'getAttributeSet',   
-                'getStatus',      
-                'toArray'
-            ])
-            ->getMock();
-
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
         $this->context = new Update($this->dw);
     } 
 
@@ -34,75 +25,85 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
+
+        //dataWrappers 
+        $image            = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Image', 
+            $this
+        );
+        $simple           = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            $this
+        );
+
+        //data
         $info             = null;
-        $skuConfig        = 'sku config';
-        $simpleCollection = [];
-        $imageCollection  = [];
+
+        //config
+        $sku              = 'sku';
         $name             = 'Product name';
         $description      = 'Description';
         $brand            = 'Brand';
         $attributes       = ['attribute 1' => 1];
         $attributeSet     = 2;
         $status           = 'active'; 
+
+        //image
+        $url              = 'http://site.com/image.jpg';
+        $position         = 1;
+
+        //simple
+        $simpleSku        = 'simple sku'; 
+        $variation        = 'variation';
+        $ean              = 'ean';
+
         $exportedData     = [
             'name' => 'dtomarketplace.context.venture.product.update',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku_config'        => $skuConfig,
-                'simple_collection' => $simpleCollection,
+                'sku'       => $sku,
                 'name'              => $name,
                 'description'       => $description,
                 'brand'             => $brand,
                 'attributes'        => $attributes,
                 'attribute_set'     => $attributeSet,
+                'image_collection'  => [
+                    [
+                        'url'      => $url,
+                        'position' => $position
+                    ]
+                ],
+                'simple_collection' => [
+                    [
+                        'sku'       => $simpleSku,
+                        'variation' => $variation,
+                        'ean'       => $ean
+                    ]
+                ],
                 'status'            => $status
             ]
         ];
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getSkuConfig')
-            ->willReturn($skuConfig);
+        $simple->method('getSku')->willReturn($simpleSku);
+        $simple->method('getVariation')->willReturn($variation);
+        $simple->method('getEan')->willReturn($ean);
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getSimpleCollection')
-            ->willReturn($simpleCollection);
+        $image->method('getUrl')->willReturn($url);
+        $image->method('getPosition')->willReturn($position);
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getName')
-            ->willReturn($name);
+        $this->dw->method('getSku')->willReturn($sku);
+        $this->dw->method('getName')->willReturn($name);
+        $this->dw->method('getDescription')->willReturn($description);
+        $this->dw->method('getBrand')->willReturn($brand);
+        $this->dw->method('getAttributes')->willReturn($attributes);
+        $this->dw->method('getAttributeSet')->willReturn($attributeSet);
+        $this->dw->method('getStatus')->willReturn($status);
+        $this->dw->method('getImageCollection')->willReturn([$image]);
+        $this->dw->method('getSimpleCollection')->willReturn([$simple]);
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getDescription')
-            ->willReturn($description);
+        $this->assertSame($exportedData, $this->context->exportContextData());
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getBrand')
-            ->willReturn($brand);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getAttributes')
-            ->willReturn($attributes);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getAttributeSet')
-            ->willReturn($attributeSet);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getStatus')
-            ->willReturn($status);
-
-        $this->assertSame(
-            $exportedData,
-            $this->context->exportContextData()
-        );
     }
 }

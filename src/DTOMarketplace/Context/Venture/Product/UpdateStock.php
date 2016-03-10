@@ -33,7 +33,5 @@ class UpdateStock extends BaseOutContext
             'sku'               => $dataWrapper->getSku(),
             'simple_collection' => $simpleCollection
         ]);
-
-
     }
 }

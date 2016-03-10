@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Partner\Order;
 
+use Context\DataWrapper\Mock;
+
 class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,10 +11,10 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods(['getOrderNr', 'getVentureOrderNr', 'toArray'])
-            ->getMock();
-
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Order\Order',
+            $this
+        );
         $this->context = new ConfirmOrder($this->dw);
     } 
 
@@ -26,6 +28,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
             'name' => 'dtomarketplace.context.partner.order.confirmorder',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'order_nr'         => $orderNr,
                 'venture_order_nr' => $ventureOrderNr
@@ -42,8 +45,11 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
             ->method('getVentureOrderNr')
             ->willReturn($ventureOrderNr);
 
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-        $this->assertSame($exportedData, $export);
+        $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

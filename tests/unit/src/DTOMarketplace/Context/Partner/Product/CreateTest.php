@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\Product;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,10 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Catalog\Config', $this);
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
         $this->context = new Create($this->dw);
     } 
 
@@ -28,34 +31,54 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $brand            = 'brand';
         $price            = 100.00;
         $specialPrice     = 50.00;
-        $specialFromDate  = 50.00;
-        $specialToDate    = 50.00;
+        $specialFromDate  = '2001-01-01';
+        $specialToDate    = '2010-01-01';
         $attributes       = [];
         $attributeSet     = 1;
         $images           = [];
+        $url              = 'http://site.com/url';
+        $position         = 1;
         $simpleCollection = [
             [
-                'sku_simple' => $skuSimple,
+                'partner_sku' => $skuSimple,
                 'variation' => $variation,
                 'quantity' => $quantity,
                 'ean' => $ean,
             ]
         ]; 
+        $imageCollection = [
+            [
+            'url'      => $url,
+            'position' => $position
+            ]
+        ];
         $status           = 'active';
 
-        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
+        $simple = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            $this
+        );
 
-        $simple->method('getSkuSimple')->willReturn($skuSimple);
+        $image = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Image',
+            $this
+        );
+
+        $image->method('getUrl')->willReturn($url);
+        $image->method('getPosition')->willReturn($position);
+
+        $simple->method('getPartnerSku')->willReturn($skuSimple);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getQuantity')->willReturn($quantity);
         $simple->method('getEan')->willReturn($ean);
                              
         $exportedData     = [
-            'name' => 'iris.context.partner.product.create',
+            'name' => 'dtomarketplace.context.partner.product.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku_config'        => $skuConfig,
+                'sku'               => $skuConfig,
                 'name'              => $name,
                 'description'       => $description,
                 'brand'             => $brand,
@@ -65,13 +88,12 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                 'special_to_date'   => $specialToDate,
                 'attributes'        => $attributes,
                 'attribute_set'     => $attributeSet,
-                'images'            => $images,
+                'image_collection'  => $imageCollection,
                 'simple_collection' => $simpleCollection,
-                'status'            => $status
             ]
         ];
 
-        $this->dw->method('getSkuConfig')->willReturn($skuConfig);
+        $this->dw->method('getSku')->willReturn($skuConfig);
         $this->dw->method('getName')->willReturn($name);
         $this->dw->method('getDescription')->willReturn($description);
         $this->dw->method('getBrand')->willReturn($brand);
@@ -81,10 +103,15 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getSpecialToDate')->willReturn($specialToDate);
         $this->dw->method('getAttributes')->willReturn($attributes);
         $this->dw->method('getAttributeSet')->willReturn($attributeSet);
-        $this->dw->method('getImages')->willReturn($images);
+        $this->dw->method('getImageCollection')->willReturn([$image]);
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
         $this->dw->method('getStatus')->willReturn($status);
 
         $this->assertSame($exportedData,$this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('post', $this->context->getHttpMethod());
     }
 }

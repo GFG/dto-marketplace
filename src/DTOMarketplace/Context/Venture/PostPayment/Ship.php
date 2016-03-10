@@ -20,15 +20,24 @@ class Ship extends BaseOutContext
     public function exportContextData()
     {
         $dataWrapper = $this->getDataWrapper();
+        $items = [];
+
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'tracking_code'         => $item->getTrackingCode(),
+                'tracking_url'          => $item->getTrackingUrl(),
+                'nfe_key'               => $item->getNfeKey(),
+                'delivery_type'         => $item->getDeliveryType(),
+                'shipping_provider'     => $item->getShippingProvider(),
+                'venture_order_item_id' => $item->getVentureOrderItemId(),
+                'reason'                => $item->getReason(),
+                'reason_detail'         => $item->getReasonDetail()
+            ];
+        }
 
         return $this->prepareExport([
-            'delivery_type'         => $dataWrapper->getDeliveryType(),
-            'shipping_provider'     => $dataWrapper->getShippingProvider(),
-            'tracking_code'         => $dataWrapper->getTrackingCode(),
-            'tracking_url'          => $dataWrapper->getTrackingUrl(),
-            'nfe_key'               => $dataWrapper->getNfeKey(),
-            'venture_order_nr'      => $dataWrapper->getVentureOrderNr(),
-            'venture_order_item_id' => $dataWrapper->getVentureOrderItemId()
+            'venture_order_nr' => $dataWrapper->getVentureOrderNr(),
+            'item_collection'  => $items
         ]);
     }
 }

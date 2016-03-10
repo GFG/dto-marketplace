@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\Product;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class UpdateTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,21 +11,32 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Config', $this);
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
+
         $this->context = new Update($this->dw);
     } 
 
     public function testExportContextData()
     {
         //dataWrappers 
-        $image  = t::mock('DTOMarketplace\DataWrapper\Catalog\Image', $this);
-        $simple = t::mock('DTOMarketplace\DataWrapper\Catalog\Simple', $this);
+        $image            = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Image', 
+            $this
+        );
+        $simple           = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            $this
+        );
 
         //data
         $info             = null;
 
         //config
-        $partnerSku       = 'sku config';
+        $sku              = 'venture sku';
+        $partnerSku       = 'sku partner';
         $name             = 'Product name';
         $description      = 'Description';
         $brand            = 'Brand';
@@ -43,12 +54,12 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $ean              = 'ean';
 
         $exportedData     = [
-            'name' => 'iris.context.partner.product.update',
+            'name' => 'dtomarketplace.context.partner.product.update',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku_config'        => $skuConfig,
-                'simple_collection' => $simpleCollection,
+                'partner_sku'       => $partnerSku,
                 'name'              => $name,
                 'description'       => $description,
                 'brand'             => $brand,
@@ -89,5 +100,10 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
 
         $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

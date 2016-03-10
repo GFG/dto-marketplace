@@ -50,6 +50,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
             'name' => 'dtomarketplace.context.venture.product.updateprice',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'sku'               => $skuConfig,
                 'price'             => $price,
@@ -59,48 +60,15 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
                 'simple_collection' => [$simpleCollection]
             ]
         ];
+        $this->dwSimple->method('getSku')->willReturn($skuSimple);
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getSku')
-            ->willReturn($skuConfig);
+        $this->dw->method('getSku')->willReturn($skuConfig);
+        $this->dw->method('getPrice')->willReturn($price);
+        $this->dw->method('getSpecialPrice')->willReturn($specialPrice);
+        $this->dw->method('getSpecialFromDate')->willReturn($specialFromDate);
+        $this->dw->method('getSpecialToDate')->willReturn($specialToDate);
+        $this->dw->method('getSimpleCollection')->willReturn([$this->dwSimple]);
 
-        $this->dwSimple
-            ->expects($this->once())
-            ->method('getSku')
-            ->willReturn($skuSimple);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getPrice')
-            ->willReturn($price);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getSpecialPrice')
-            ->willReturn($specialPrice);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getSpecialFromDate')
-            ->willReturn($specialFromDate);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getSpecialToDate')
-            ->willReturn($specialToDate);
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getSimpleCollection')
-            ->willReturn([$this->dwSimple]);
-
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-
-        $this->assertEquals(
-            $exportedData,
-            $export
-        );
+        $this->assertEquals($exportedData, $this->context->exportContextData());
     }
 }

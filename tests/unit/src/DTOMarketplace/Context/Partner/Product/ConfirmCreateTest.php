@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Partner\Product;
 
+use Context\DataWrapper\Mock;
+
 class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,13 +11,10 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getSkuConfig',
-                'getSimpleCollection',
-                'toArray'])
-            ->getMock();
-
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config',
+            $this
+        );
         $this->context = new ConfirmCreate($this->dw);
     } 
 
@@ -26,28 +25,33 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $hash      = 'hash';
-        $info      = null;
-        $skuConfig = 'sku config';
-        $simpleSku = 'simple sku';
-        $simple    = $this->getMockBuilder('DTOMarketplace\DataWrapper\Catalog\Simple')
-            ->setMethods(['getSkuSimple'])
-            ->getMock();
+        $hash       = 'hash';
+        $info       = null;
+        $sku        = 'sku';
+        $partnerSku = 'partner sku';
+        $simpleSku  = 'simple sku';
+        $simple     = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple', 
+            $this
+        );
 
-        $simple->method('getSkuSimple')->willReturn($simpleSku);
+        $simple->method('getSku')->willReturn($simpleSku);
 
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
-        $this->dw->method('getSkuConfig')->willReturn($skuConfig);
+        $this->dw->method('getSku')->willReturn($sku);
+        $this->dw->method('getPartnerSku')->willReturn($partnerSku);
 
         $exportedData     = [
-            'name' => 'iris.context.partner.product.confirmcreate',
+            'name' => 'dtomarketplace.context.partner.product.confirmcreate',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku_config'        => $skuConfig,
+                'sku'         => $sku,
+                'partner_sku' => $partnerSku,
                 'simple_collection' => [
                     [
-                        'sku_simple' => $simpleSku
+                        'sku' => $simpleSku
                     ]
                 ]
             ]

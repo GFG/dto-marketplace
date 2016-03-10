@@ -3,7 +3,6 @@
 namespace DTOMarketplace\Context;
 
 use Context\Context\Base;
-use Url\Url;
 
 abstract class BaseInContext extends Base
 {

@@ -24,14 +24,13 @@ class ConfirmCreate extends BaseOutContext
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'sku'         => $simple->getSku(),
-                'partner_sku' => $simple->getPartnerSku(),
+                'sku' => $simple->getSku(),
             ];
         }
 
         return $this->prepareExport([
             'sku'               => $dataWrapper->getSku(),
-            'partner_sku'       => $dataWrapper->getPartnerku(),
+            'partner_sku'       => $dataWrapper->getPartnerSku(),
             'simple_collection' => $simpleCollection
         ]);
     }

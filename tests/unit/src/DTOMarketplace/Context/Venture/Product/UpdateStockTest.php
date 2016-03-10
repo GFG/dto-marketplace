@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Venture\Product;
 
+use Context\DataWrapper\Mock;
+
 class UpdateStockTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,21 +11,14 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getSku',       
-                'getSimpleCollection',       
-                'toArray'
-            ])
-            ->getMock();
-
-        $this->dwSimple = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getSku',       
-                'getQuantity',       
-                'toArray'
-            ])
-            ->getMock();
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
+        $this->dwSimple = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            $this
+        );
 
         $this->context = new UpdateStock($this->dw);
     } 
@@ -35,13 +30,14 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $info             = null;
-        $skuSimple        = 'sku simple';
-        $quantity         = 1;
+        $info         = null;
+        $skuSimple    = 'sku simple';
+        $quantity     = 1;
         $exportedData = [
             'name' => 'dtomarketplace.context.venture.product.updatestock',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'sku' => 'sku config',
                 'simple_collection' => [[
@@ -51,32 +47,12 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $this->dwSimple
-            ->expects($this->once())
-            ->method('getSku')
-            ->willReturn($skuSimple);
+        $this->dwSimple->method('getSku')->willReturn($skuSimple);
+        $this->dwSimple->method('getQuantity')->willReturn($quantity);
 
-        $this->dwSimple
-            ->expects($this->once())
-            ->method('getQuantity')
-            ->willReturn($quantity);
+        $this->dw->method('getSku')->willReturn('sku config'); 
+        $this->dw->method('getSimpleCollection')->willReturn([$this->dwSimple]);
 
-        $this->dw
-            ->expects($this->once())
-            ->method('getSku')
-            ->willReturn('sku config');
-
-        $this->dw
-            ->expects($this->once())
-            ->method('getSimpleCollection')
-            ->willReturn([$this->dwSimple]);
-
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-
-        $this->assertSame(
-            $exportedData,
-            $export
-        );
+        $this->assertSame($exportedData, $this->context->exportContextData());
     }
 }

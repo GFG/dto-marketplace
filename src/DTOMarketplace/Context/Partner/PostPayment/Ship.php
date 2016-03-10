@@ -20,15 +20,25 @@ class Ship extends BaseInContext
     public function exportContextData()
     {
         $dataWrapper = $this->getDataWrapper();
+        $items = [];
+
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'tracking_code'     => $item->getTrackingCode(),
+                'tracking_url'      => $item->getTrackingUrl(),
+                'nfe_key'           => $item->getNfeKey(),
+                'delivery_type'     => $item->getDeliveryType(),
+                'shipping_provider' => $item->getShippingProvider(),
+                'order_item_id'     => $item->getOrderItemId(),
+                'reason'            => $item->getReason(),
+                'reason_detail'     => $item->getReasonDetail()
+            ];
+        }
 
         return $this->prepareExport([
-            'delivery_type'     => $dataWrapper->getDeliveryType(),
-            'shipping_provider' => $dataWrapper->getShippingProvider(),
-            'tracking_code'     => $dataWrapper->getTrackingCode(),
-            'tracking_url'      => $dataWrapper->getTrackingUrl(),
-            'nfe_key'           => $dataWrapper->getNfeKey(),
-            'order_nr'          => $dataWrapper->getOrderNr(),
-            'order_item_id'     => $dataWrapper->getOrderItemId()
+            'order_nr'        => $dataWrapper->getOrderNr(),
+            'item_collection' => $items
         ]);
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Venture\Order;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class CancelTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,10 @@ class CancelTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\Order\Order', $this);
+        $this->dw      = Mock::mock(
+            'DTOMarketplace\DataWrapper\Order\Order', 
+            $this
+        );
         $this->context = new Cancel($this->dw);
     } 
 
@@ -23,13 +26,19 @@ class CancelTest extends \PHPUnit_Framework_TestCase
             'name' => 'dtomarketplace.context.venture.order.cancel',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'venture_order_nr' => $ventureOrderNr,
             ]
         ];
 
-        $this->dw->method('getVentureOrderNr')->willReturn($orderNr);
+        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNr);
 
         $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

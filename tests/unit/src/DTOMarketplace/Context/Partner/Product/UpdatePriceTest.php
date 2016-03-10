@@ -2,6 +2,8 @@
 
 namespace DTOMarketplace\Context\Partner\Product;
 
+use Context\DataWrapper\Mock;
+
 class UpdatePriceTest extends \PHPUnit_Framework_TestCase
 {
     private $dw;
@@ -9,17 +11,10 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
-            ->setMethods([
-                'getPartnerSku',       
-                'getPrice',       
-                'getSpecialPrice',       
-                'getSpecialFromDate',       
-                'getSpecialToDate',       
-                'toArray'
-            ])
-            ->getMock();
-
+        $this->dw      = Mock::mock(
+            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            $this
+        );
         $this->context = new UpdatePrice($this->dw);
     } 
 
@@ -33,9 +28,10 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $specialToDate    = '2016-02-01 00:00:01';
         $simpleCollection = [];
         $exportedData = [
-            'name' => 'iris.context.partner.product.updateprice',
+            'name' => 'dtomarketplace.context.partner.product.updateprice',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'partner_sku'       => $partnerSku,
                 'price'             => $price,
@@ -45,12 +41,17 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
             ]
         ];
 
-        $this->dw->method('getSkuConfig')->willReturn($skuConfig);
+        $this->dw->method('getPartnerSku')->willReturn($partnerSku);
         $this->dw->method('getPrice')->willReturn($price);
         $this->dw->method('getSpecialPrice')->willReturn($specialPrice);
         $this->dw->method('getSpecialFromDate')->willReturn($specialFromDate);
         $this->dw->method('getSpecialToDate')->willReturn($specialToDate);
 
         $this->assertSame($exportedData, $this->context->exportContextData());
+    }
+
+    public function testGetHttpMethod()
+    {
+        $this->assertSame('put', $this->context->getHttpMethod());
     }
 }

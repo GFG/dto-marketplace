@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Partner\PostPayment;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class ShipTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,47 +11,72 @@ class ShipTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment', $this);
+        $this->dw = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
+            $this
+        );
         $this->context = new Ship($this->dw);
     } 
 
     public function testExportContextData()
     {
-        $hash             = 'hash';
-        $info             = null;
-        $deliveryType     = 'delivery type';
-        $shippingProvider = 'shipping provider'; 
-        $trackingCode     = 'tracking code';     
-        $trackingUrl      = 'tracking url';
-        $nfeKey           = 'nfe key';
-        $orderNr          = 1234;
-        $orderItemId      = 4321;
-        $exportedData     = [
+        $item               = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\Item', 
+            $this
+        );
+        //data
+        $info               = null;
+
+        $deliveryType       = 'delivery type';
+        $shippingProvider   = 'shipping provider'; 
+        $trackingCode       = 'tracking code';     
+        $trackingUrl        = 'tracking url';
+        $nfeKey             = 'nfe key';
+        $ventureOrderNr     = 1234;
+        $ventureOrderItemId = 321;
+        $partnerCode        = 'partner code';
+        $reason             = 'reason';
+        $reasonDetail       = 'reason detail';
+
+        $exportedData       = [
             'name' => 'dtomarketplace.context.partner.postpayment.ship',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
-                'delivery_type'     => $deliveryType,
-                'shipping_provider' => $shippingProvider,
-                'tracking_code'     => $trackingCode,
-                'tracking_url'      => $trackingUrl,
-                'nfe_key'           => $nfeKey,
-                'order_nr'          => $ventureOrderNr,
-                'order_item_id'     => $partnerCode
+                'order_nr'  => $ventureOrderNr,
+                'item_collection' => [[
+                    'tracking_code'         => $trackingCode,
+                    'tracking_url'          => $trackingUrl,
+                    'nfe_key'               => $nfeKey,
+                    'delivery_type'         => $deliveryType,
+                    'shipping_provider'     => $shippingProvider,
+                    'order_item_id' => $ventureOrderItemId,
+                    'reason'                => $reason,
+                    'reason_detail' => $reasonDetail
+                ]]
             ]
         ];
 
-        $this->dw->method('getDeliveryType')->willReturn($deliveryType);
+        $this->dw->method('getOrderNr')->willReturn($ventureOrderNr);
+        $this->dw->method('getItemCollection')->willReturn([$item]);
 
-        $this->dw->method('getShippingProvider')->willReturn($shippingProvider);
-        $this->dw->method('getTrackingCode')->willReturn($trackingCode);
-        $this->dw->method('getTrackingUrl')->willReturn($trackingUrl);
-        $this->dw->method('getNfeKey')->willReturn($nfeKey);
-        $this->dw->method('getOrderNr')->willReturn($orderNr);
-        $this->dw->method('getOrderItemId')->willReturn($orderItemId);
+        $item->method('getTrackingCode')->willReturn($trackingCode);
+        $item->method('getTrackingUrl')->willReturn($trackingUrl);
+        $item->method('getNfeKey')->willReturn($nfeKey);
+        $item->method('getDeliveryType')->willReturn($deliveryType);
+        $item->method('getShippingProvider')->willReturn($shippingProvider);
+        $item->method('getOrderItemId')->willReturn($ventureOrderItemId);
+        $item->method('getReason')->willReturn($reason);
+        $item->method('getReasonDetail')->willReturn($reasonDetail);
 
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-        $this->assertSame($exportedData, $export);
+        $this->assertSame($exportedData, $this->context->exportContextData());
+
+    }
+
+    public function testIsValidMethod()
+    {
+        $_SERVER['REQUEST_METHOD'] = 'put';
+        $this->assertTrue($this->context->isValidMethod());
     }
 }

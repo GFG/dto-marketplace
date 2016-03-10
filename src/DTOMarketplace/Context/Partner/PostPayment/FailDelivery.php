@@ -21,11 +21,18 @@ class FailDelivery extends BaseInContext
     {
         $dataWrapper = $this->getDataWrapper();
 
+        $items = [];
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'reason'        => $item->getReason(),
+                'reason_detail' => $item->getReasonDetail(),
+                'order_item_id' => $item->getOrderItemId()
+            ];
+        }
+
         return $this->prepareExport([
-            'order_nr'      => $dataWrapper->getOrderNr(),
-            'order_item_id' => $dataWrapper->getOrderItemId(),
-            'reason'        => $dataWrapper->getReason(),
-            'reason_detail' => $dataWrapper->getReasonDetail()
+            'order_nr'        => $dataWrapper->getOrderNr(),
+            'item_collection' => $items
         ]);
     }
 }

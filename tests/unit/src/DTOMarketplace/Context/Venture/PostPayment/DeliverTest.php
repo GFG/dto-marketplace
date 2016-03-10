@@ -2,7 +2,7 @@
 
 namespace DTOMarketplace\Context\Venture\PostPayment;
 
-use DTOMarketplace\DataWrapper\Mock as t;
+use Context\DataWrapper\Mock;
 
 class DeliverTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,10 @@ class DeliverTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = t::mock('DTOMarketplace\DataWrapper\PostPayment\PostPayment', $this);
+        $this->dw      = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
+            $this
+        );
         $this->context = new Deliver($this->dw);
     } 
 
@@ -22,6 +25,10 @@ class DeliverTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
+        $item               = Mock::mock(
+            'DTOMarketplace\DataWrapper\PostPayment\Item', 
+            $this
+        );
         $hash               = 'hash';
         $info               = null;
         $ventureOrderNr = 1234;
@@ -30,20 +37,20 @@ class DeliverTest extends \PHPUnit_Framework_TestCase
             'name' => 'dtomarketplace.context.venture.postpayment.deliver',
             'info' => $info,
             'hash' => $this->context->getHash(),
+            'data_wrapper' => get_class($this->dw),
             'data' => [
                 'venture_order_nr'  => $ventureOrderNr,
-                'venture_order_item_id' => $ventureOrderItemId
+                'item_collection' => [[
+                    'venture_order_item_id' => $ventureOrderItemId
+                ]]
             ]
         ];
 
-        $this->dw->method('getVentureOrderNr')
-            ->willReturn($ventureOrderNr);
+        $item->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
 
-        $this->dw->method('getVentureOrderItemId')
-            ->willReturn($ventureOrderItemId);
+        $this->dw->method('getVentureOrderNr')->willReturn($ventureOrderNr);
+        $this->dw->method('getItemCollection')->willReturn([$item]);
 
-        $export = $this->context->exportContextData();
-        unset($export['data_wrapper']);
-        $this->assertSame($exportedData, $export);
+        $this->assertSame($exportedData, $this->context->exportContextData());
     }
 }

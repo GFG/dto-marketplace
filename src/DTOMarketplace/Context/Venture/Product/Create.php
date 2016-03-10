@@ -25,7 +25,7 @@ class Create extends BaseOutContext
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'partner_sku' => $simple->getSku(),
+                'partner_sku' => $simple->getPartnerSku(),
                 'variation'   => $simple->getVariation(),
                 'quantity'    => $simple->getQuantity(),
                 'ean'         => $simple->getEan(),

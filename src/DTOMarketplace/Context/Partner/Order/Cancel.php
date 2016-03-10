@@ -3,7 +3,6 @@
 namespace DTOMarketplace\Context\Partner\Order;
 
 use DTOMarketplace\Context\BaseOutContext;
-use Url\Url;
 
 class Cancel extends BaseOutContext
 {

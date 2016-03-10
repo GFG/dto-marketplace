@@ -21,11 +21,18 @@ class FailDelivery extends BaseOutContext
     {
         $dataWrapper = $this->getDataWrapper();
 
+        $items = [];
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'reason'                => $item->getReason(),
+                'reason_detail'         => $item->getReasonDetail(),
+                'venture_order_item_id' => $item->getVentureOrderItemId()
+            ];
+        }
+
         return $this->prepareExport([
-            'venture_order_nr'      => $dataWrapper->getVentureOrderNr(),
-            'venture_order_item_id' => $dataWrapper->getVentureOrderItemId(),
-            'reason'                => $dataWrapper->getReason(),
-            'reason_detail'         => $dataWrapper->getReasonDetail()
+            'venture_order_nr' => $dataWrapper->getVentureOrderNr(),
+            'item_collection'  => $items
         ]);
     }
 }

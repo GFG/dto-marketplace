@@ -20,10 +20,17 @@ class Deliver extends BaseInContext
     public function exportContextData()
     {
         $dataWrapper = $this->getDataWrapper();
+        $items = [];
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $items[] = [
+                'order_item_id' => $item->getOrderItemId()
+            ];
+        }
 
         return $this->prepareExport([
-            'order_nr'  => $dataWrapper->getOrderNr(),
-            'order_item_id' => $dataWrapper->getOrderItemId()
+            'order_nr'        => $dataWrapper->getOrderNr(),
+            'item_collection' => $items
         ]);
+
     }
 }
