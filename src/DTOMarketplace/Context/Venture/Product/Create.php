@@ -28,7 +28,8 @@ class Create extends BaseOutContext
                 'partner_sku' => $simple->getSku(),
                 'variation'   => $simple->getVariation(),
                 'quantity'    => $simple->getQuantity(),
-                'ean'         => $simple->getEan()
+                'ean'         => $simple->getEan(),
+                'attributes'  => $simple->getAttributes()
             ];
         }
 
