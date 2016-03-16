@@ -69,9 +69,10 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $simpleCollection = [
             [
                 'partner_sku' => $partnerSku,
-                'variation' => $variation,
-                'quantity' => $quantity,
-                'ean' => $ean,
+                'variation'   => $variation,
+                'quantity'    => $quantity,
+                'ean'         => $ean,
+                'attributes'  => null
             ]
         ]; 
 

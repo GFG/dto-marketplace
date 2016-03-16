@@ -88,29 +88,25 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                     'document'   => $document,
                     'birthday'   => $birthday
                 ],
-                'addresses' => [
-
-                    'shipping' => [
-                        'street'        => $street,
-                         'number'       => $number,
-                         'complement'   => $complement,
-                         'city'         => $city,
-                         'postcode'     => $postCode,
-                         'neighborhood' => $neighborhood,
-                         'region_code'  => $regionCode,
-                         'phone'        => $phone
-                    ],
-
-                    'billing' => [
-                        'street'        => $street,
-                         'number'       => $number,
-                         'complement'   => $complement,
-                         'city'         => $city,
-                         'postcode'     => $postCode,
-                         'neighborhood' => $neighborhood,
-                         'region_code'  => $regionCode,
-                         'phone'        => $phone
-                    ]
+                'shipping_address' => [
+                    'street'        => $street,
+                        'number'       => $number,
+                        'complement'   => $complement,
+                        'city'         => $city,
+                        'postcode'     => $postCode,
+                        'neighborhood' => $neighborhood,
+                        'region_code'  => $regionCode,
+                        'phone'        => $phone
+                ],
+                'billing_address' => [
+                    'street'        => $street,
+                    'number'       => $number,
+                    'complement'   => $complement,
+                    'city'         => $city,
+                    'postcode'     => $postCode,
+                    'neighborhood' => $neighborhood,
+                    'region_code'  => $regionCode,
+                    'phone'        => $phone
                 ]
             ]
         ];
