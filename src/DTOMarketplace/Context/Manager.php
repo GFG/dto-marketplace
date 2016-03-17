@@ -17,6 +17,6 @@ class Manager extends \Context\Manager
     public function build($contextName, $dataWrapperName, $dataWrapperData)
     {
         $dataWrapper = new $dataWrapperName($dataWrapperData);
-        return parent::build($contextName, $dataWrapper);
+        return $this->create($contextName, $dataWrapper);
     }
 }
