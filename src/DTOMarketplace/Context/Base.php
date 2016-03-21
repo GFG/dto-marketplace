@@ -2,10 +2,9 @@
 
 namespace DTOMarketplace\Context;
 
-use Context\Context\Base;
 use Url\Url;
 
-abstract class BaseOutContext extends Base
+abstract class Base extends \Context\Context\Base
 {
     /**
      * @var Url\Url

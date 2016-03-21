@@ -2,9 +2,9 @@
 
 namespace DTOMarketplace\Context\Venture\Product;
 
-use DTOMarketplace\Context\BaseOutContext;
+use DTOMarketplace\Context\Base;
 
-class UpdateStock extends BaseOutContext
+class UpdateStock extends Base
 {
     /**
      * {@inheritdoc}

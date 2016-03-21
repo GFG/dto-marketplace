@@ -2,9 +2,9 @@
 
 namespace DTOMarketplace\Context\Venture\PostPayment;
 
-use DTOMarketplace\Context\BaseOutContext;
+use DTOMarketplace\Context\Base;
 
-class Cancel extends BaseOutContext
+class Cancel extends Base
 {
     /**
      * {@inheritdoc}

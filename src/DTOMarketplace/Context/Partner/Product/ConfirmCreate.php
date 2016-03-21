@@ -2,9 +2,9 @@
 
 namespace DTOMarketplace\Context\Partner\Product;
 
-use DTOMarketplace\Context\BaseOutContext;
+use DTOMarketplace\Context\Base;
 
-class ConfirmCreate extends BaseOutContext
+class ConfirmCreate extends Base
 {
     /**
      * {@inheritdoc}
