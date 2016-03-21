@@ -56,7 +56,7 @@ abstract class Factory extends \Context\Factory\Base
         
         if (!$mappingList) {
             $mappingList = array_map(function ($context) {
-                return __NAMESPACE__ . '\\' . $context;
+                return (new \ReflectionObject($this))->getNamespaceName() . '\\' . $context;
             }, self::$mappedContext);
         }
 
