@@ -33,7 +33,7 @@ abstract class Base extends \Context\Context\Base
     {
         $path = array_merge(
             ['api', 'version' => 'v2'],
-            array_slice(explode('\\', static::class), 2)
+            array_slice(preg_split('@\\\\|_@', static::class), -3)
         );
 
         return ['httpMethod' => $this->getHttpMethod(), 'path' => $path];
