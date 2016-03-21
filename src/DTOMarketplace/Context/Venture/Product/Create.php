@@ -25,7 +25,7 @@ class Create extends Base
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'partner_sku' => $simple->getPartnerSku(),
+                'sku'         => $simple->getSku(),
                 'variation'   => $simple->getVariation(),
                 'quantity'    => $simple->getQuantity(),
                 'ean'         => $simple->getEan(),

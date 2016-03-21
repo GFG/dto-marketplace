@@ -54,7 +54,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $specialToDate   = '2015-02-01';
         $attributes      = ['attribute1' => 'Attribute'];
 
-        $partnerSku      = 'partner sku';
+        $skuSimple       = 'sku simple';
         $variation       = 'variation';
         $quantity        = 2;
         $ean             = 'ean';
@@ -68,7 +68,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         ];
         $simpleCollection = [
             [
-                'partner_sku' => $partnerSku,
+                'sku' => $skuSimple,
                 'variation'   => $variation,
                 'quantity'    => $quantity,
                 'ean'         => $ean,
@@ -102,7 +102,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $image->method('getUrl')->willReturn($url);
         $image->method('getPosition')->willReturn($position);
 
-        $simple->method('getPartnerSku')->willReturn($partnerSku);
+        $simple->method('getSku')->willReturn($skuSimple);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getQuantity')->willReturn($quantity);
         $simple->method('getEan')->willReturn($ean);
