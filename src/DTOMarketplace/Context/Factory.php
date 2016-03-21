@@ -32,20 +32,20 @@ abstract class Factory extends \Context\Factory\Base
         self::VENTURE_PRODUCT_UPDATESTOCK      => 'Venture\Product\UpdateStock',
         self::VENTURE_PRODUCT_UPDATEPRICE      => 'Venture\Product\UpdatePrice',
         self::VENTURE_PRODUCT_DELETE           => 'Venture\Product\Delete',
-                                              
+
         self::PARTNER_PRODUCT_CONFIRMCREATE    => 'Partner\Product\ConfirmCreate',
-                                              
+
         self::PARTNER_ORDER_CREATE             => 'Partner\Order\Create',
         self::PARTNER_ORDER_CONFIRMPAYMENT     => 'Partner\Order\ConfirmPayment',
         self::PARTNER_ORDER_CANCEL             => 'Partner\Order\Cancel',
-                                              
+
         self::VENTURE_ORDER_CONFIRMORDER       => 'Venture\Order\ConfirmPayment',
-                                              
+
         self::VENTURE_POSTPAYMENT_SHIP         => 'Venture\PostPayment\Shipped',
         self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Delivered',
         self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailedDelivery',
         self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Canceled',
-     ];
+    ];
 
     /**
      * {@inheritdoc}
@@ -53,10 +53,10 @@ abstract class Factory extends \Context\Factory\Base
     public function getMappingList()
     {
         static $mappingList = null;
-        
+
         if (!$mappingList) {
             $mappingList = array_map(function ($context) {
-                return (new \ReflectionObject($this))->getNamespaceName() . '\\' . $context;
+                return __NAMESPACE__ . '\\' . $context;
             }, self::$mappedContext);
         }
 
