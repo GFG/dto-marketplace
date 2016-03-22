@@ -24,7 +24,8 @@ class ConfirmCreate extends Base
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'sku' => $simple->getSku(),
+                'sku'         => $simple->getSku(),
+                'partner_sku' => $simple->getPartnerSku()
             ];
         }
 

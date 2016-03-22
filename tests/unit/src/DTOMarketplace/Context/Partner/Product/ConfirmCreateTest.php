@@ -30,12 +30,14 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
         $sku        = 'sku';
         $partnerSku = 'partner sku';
         $simpleSku  = 'simple sku';
+        $partnerSimpleSku  = 'partner simple sku';
         $simple     = Mock::mock(
             'DTOMarketplace\DataWrapper\Catalog\Simple', 
             $this
         );
 
         $simple->method('getSku')->willReturn($simpleSku);
+        $simple->method('getPartnerSku')->willReturn($partnerSimpleSku);
 
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
         $this->dw->method('getSku')->willReturn($sku);
@@ -51,7 +53,8 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
                 'partner_sku' => $partnerSku,
                 'simple_collection' => [
                     [
-                        'sku' => $simpleSku
+                        'sku' => $simpleSku,
+                        'partner_sku' => $partnerSimpleSku
                     ]
                 ]
             ]
