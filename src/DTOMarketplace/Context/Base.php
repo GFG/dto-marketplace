@@ -31,12 +31,9 @@ abstract class Base extends \Context\Context\Base
      */
     protected function getUrlParts()
     {
-        $path = array_merge(
-            ['api', 'version' => 'v2'],
-            array_map(
-                'strtolower',
-                array_slice(preg_split('@\\\\|_@', static::class), -3)
-            )
+        $path = array_map(
+            'strtolower',
+            array_slice(preg_split('@\\\\|_@', static::class), -3)
         );
 
         return ['httpMethod' => $this->getHttpMethod(), 'path' => $path];
