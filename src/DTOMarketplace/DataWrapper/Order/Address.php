@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\DataWrapper\Order;
 
-use Context\DataWrapper\Base;
+use GFG\DTOContext\DataWrapper\Base;
 
 /**
  * @SuppressWarnings(PHPMD.UnusedPrivateField)

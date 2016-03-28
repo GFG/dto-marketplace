@@ -7,7 +7,7 @@ class Manager extends \Context\Manager
     /**
      * @param string $contextName
      * @param string $dataWrapperName
-     * @param array $datawrapperData
+     * @param array $dataWrapperData
      */
     public function build(
         $contextName,

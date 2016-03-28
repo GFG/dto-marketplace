@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\DataWrapper\Order;
 
-use Context\DataWrapper\BaseCollection;
+use GFG\DTOContext\DataWrapper\BaseCollection;
 
 class ItemCollection extends BaseCollection
 {

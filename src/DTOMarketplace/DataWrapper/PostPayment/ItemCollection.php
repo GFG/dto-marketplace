@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\DataWrapper\PostPayment;
 
-use Context\DataWrapper\BaseCollection;
+use GFG\DTOContext\DataWrapper\BaseCollection;
 
 class ItemCollection extends BaseCollection
 {

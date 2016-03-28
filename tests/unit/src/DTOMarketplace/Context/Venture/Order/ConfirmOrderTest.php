@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context\Venture\Order;
 
-use Context\DataWrapper\Mock;
+use GFG\DTOContext\DataWrapper\Mock;
 
 class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = Mock::mock(
+        $this->dw = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Order', 
             $this
         );
@@ -25,7 +25,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $info           = null;
+        $info           = [];
         $salesOrderId   = 1;
         $sku            = 'sku';
         $orderNr        = 'order nr';
@@ -35,7 +35,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
         $reasonDetail   = 'reason detail';
         $price          = 100.0;
         $items          = [];
-        $item           = Mock::mock(
+        $item           = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Item', 
             $this
         );

@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\DataWrapper\Catalog;
 
-use Context\DataWrapper\BaseCollection;
+use GFG\DTOContext\DataWrapper\BaseCollection;
 
 class ImageCollection extends BaseCollection
 {

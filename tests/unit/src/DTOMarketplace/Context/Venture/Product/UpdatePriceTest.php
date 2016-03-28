@@ -9,7 +9,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
+        $this->dw = $this->getMockBuilder('GFG\DTOContext\DataWrapper\DataWrapperInterface')
             ->setMethods([
                 'getSku',       
                 'getPrice',       
@@ -21,7 +21,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
             ])
             ->getMock();
 
-        $this->dwSimple = $this->getMockBuilder('Context\DataWrapper\DataWrapperInterface')
+        $this->dwSimple = $this->getMockBuilder('GFG\DTOContext\DataWrapper\DataWrapperInterface')
             ->setMethods([
                 'getSku',
                 'toArray'
@@ -38,7 +38,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $info             = null;
+        $info             = [];
         $skuConfig        = 'sku config';
         $skuSimple        = 'sku simple';
         $price            = 100.00;

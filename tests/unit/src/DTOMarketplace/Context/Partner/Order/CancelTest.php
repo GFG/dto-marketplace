@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context\Partner\Order;
 
-use Context\DataWrapper\Mock;
+use GFG\DTOContext\DataWrapper\Mock;
 
 class CancelTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = Mock::mock(
+        $this->dw = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Order', 
             $this
         );
@@ -29,7 +29,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
     public function testExportContextData()
     {
         $hash         = 'hash';
-        $info         = null;
+        $info         = [];
         $orderNr      = 123;
         $exportedData = [
             'name' => 'gfg.dtomarketplace.context.partner.order.cancel',

@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context\Venture\Product;
 
-use Context\DataWrapper\Mock;
+use GFG\DTOContext\DataWrapper\Mock;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = Mock::mock(
+        $this->dw = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Catalog\Config', 
             $this
         );
@@ -25,17 +25,17 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $simple           = Mock::mock(
+        $simple           = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Catalog\Simple',
             $this
         );
-        $image            = Mock::mock(
+        $image            = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Catalog\Image',
             $this
         );
 
         //data
-        $info             = null;
+        $info             = [];
 
         //config
         $sku             = 'sku config';

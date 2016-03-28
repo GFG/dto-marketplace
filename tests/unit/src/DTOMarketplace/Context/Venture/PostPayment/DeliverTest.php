@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context\Venture\PostPayment;
 
-use Context\DataWrapper\Mock;
+use GFG\DTOContext\DataWrapper\Mock;
 
 class DeliverTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +11,7 @@ class DeliverTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw      = Mock::mock(
+        $this->dw      = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
             $this
         );
@@ -25,12 +25,12 @@ class DeliverTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-        $item               = Mock::mock(
+        $item               = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\PostPayment\Item', 
             $this
         );
         $hash               = 'hash';
-        $info               = null;
+        $info               = [];
         $ventureOrderNr = 1234;
         $ventureOrderItemId = 321;
         $exportedData       = [

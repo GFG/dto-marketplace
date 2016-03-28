@@ -2,9 +2,10 @@
 
 namespace GFG\DTOMarketplace\Context;
 
-use Url\Url;
+use GFG\DTOUrl\Url;
+use GFG\DTOContext\Context\Base as BaseContext;
 
-abstract class Base extends \Context\Context\Base
+abstract class Base extends BaseContext
 {
     /**
      * @var Url\Url

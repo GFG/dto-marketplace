@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context\Partner\Order;
 
-use Context\DataWrapper\Mock;
+use GFG\DTOContext\DataWrapper\Mock;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->dw = Mock::mock(
+        $this->dw = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Order', 
             $this
         );
@@ -20,7 +20,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     public function testExportContextData()
     {
         $hash           = 'hash';
-        $info           = null;
+        $info           = [];
         $orderNr        = 123;
         $createdAt      = '2016-01-01 00:00:01';
         $address        = 'Rua Direita, 1';
@@ -31,7 +31,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $idSalesOrderItem = 1;
 
         //items
-        $item = Mock::mock('GFG\DTOMarketplace\DataWrapper\Order\Item', $this);
+        $item = Mock::create('GFG\DTOMarketplace\DataWrapper\Order\Item', $this);
         $item->method('getId')->willReturn($idSalesOrderItem);
         $item->method('getSku')->willReturn($sku);
         $item->method('getPrice')->willReturn($price);
@@ -48,7 +48,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $regionCode   = 'SP';
         $phone        = '99999-9999';
 
-        $shippingAddressDataWrapper = Mock::mock(
+        $shippingAddressDataWrapper = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Address',
             $this
         );
@@ -73,7 +73,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             'phone'         => $phone
         ];
 
-        $billingAddressDataWrapper = Mock::mock(
+        $billingAddressDataWrapper = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Order\Address',
             $this
         );
