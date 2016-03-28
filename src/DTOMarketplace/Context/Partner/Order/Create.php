@@ -1,8 +1,8 @@
 <?php
 
-namespace DTOMarketplace\Context\Partner\Order;
+namespace GFG\DTOMarketplace\Context\Partner\Order;
 
-use DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\Context\Base;
 
 class Create extends Base
 {

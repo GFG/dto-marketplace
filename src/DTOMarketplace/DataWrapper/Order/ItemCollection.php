@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\DataWrapper\Order;
+namespace GFG\DTOMarketplace\DataWrapper\Order;
 
 use Context\DataWrapper\BaseCollection;
 
@@ -11,6 +11,6 @@ class ItemCollection extends BaseCollection
      */
     public function getType()
     {
-        return  'DTOMarketplace\DataWrapper\Order\Item';
+        return  'GFG\DTOMarketplace\DataWrapper\Order\Item';
     }
 }

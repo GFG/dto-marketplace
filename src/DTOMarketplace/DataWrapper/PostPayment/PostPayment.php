@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\DataWrapper\PostPayment;
+namespace GFG\DTOMarketplace\DataWrapper\PostPayment;
 
 use Context\DataWrapper\Base;
 

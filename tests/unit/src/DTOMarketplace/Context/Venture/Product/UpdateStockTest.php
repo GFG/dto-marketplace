@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Product;
+namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 use Context\DataWrapper\Mock;
 
@@ -12,11 +12,11 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Config', 
             $this
         );
         $this->dwSimple = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Simple',
             $this
         );
 
@@ -34,7 +34,7 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
         $skuSimple    = 'sku simple';
         $quantity     = 1;
         $exportedData = [
-            'name' => 'dtomarketplace.context.venture.product.updatestock',
+            'name' => 'gfg.dtomarketplace.context.venture.product.updatestock',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

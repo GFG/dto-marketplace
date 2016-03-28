@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Partner\Order;
+namespace GFG\DTOMarketplace\Context\Partner\Order;
 
 use Context\DataWrapper\Mock;
 
@@ -11,7 +11,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::mock(
-            'DTOMarketplace\DataWrapper\Order\Order', 
+            'GFG\DTOMarketplace\DataWrapper\Order\Order', 
             $this
         );
         $this->context = new Create($this->dw);
@@ -31,7 +31,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $idSalesOrderItem = 1;
 
         //items
-        $item = Mock::mock('DTOMarketplace\DataWrapper\Order\Item', $this);
+        $item = Mock::mock('GFG\DTOMarketplace\DataWrapper\Order\Item', $this);
         $item->method('getId')->willReturn($idSalesOrderItem);
         $item->method('getSku')->willReturn($sku);
         $item->method('getPrice')->willReturn($price);
@@ -49,7 +49,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $phone        = '99999-9999';
 
         $shippingAddressDataWrapper = Mock::mock(
-            'DTOMarketplace\DataWrapper\Order\Address',
+            'GFG\DTOMarketplace\DataWrapper\Order\Address',
             $this
         );
 
@@ -74,7 +74,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         ];
 
         $billingAddressDataWrapper = Mock::mock(
-            'DTOMarketplace\DataWrapper\Order\Address',
+            'GFG\DTOMarketplace\DataWrapper\Order\Address',
             $this
         );
 
@@ -108,7 +108,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $document   = '810.857.546-00';
         $birthday   = '01-01-1991';
 
-        $customerDataWrapper = $this->getMockBuilder('DTOMarketplace\DataWrapper\Customer')
+        $customerDataWrapper = $this->getMockBuilder('GFG\DTOMarketplace\DataWrapper\Customer')
             ->disableOriginalConstructor()
             ->setMethods([
                 'getIdCustomer',
@@ -137,7 +137,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         //\customer
 
         $exportedData   = [
-            'name' => 'dtomarketplace.context.partner.order.create',
+            'name' => 'gfg.dtomarketplace.context.partner.order.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

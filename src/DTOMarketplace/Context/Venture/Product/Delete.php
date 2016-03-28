@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Product;
+namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 class Delete extends Update
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\PostPayment;
+namespace GFG\DTOMarketplace\Context\Venture\PostPayment;
 
 use Context\DataWrapper\Mock;
 
@@ -12,7 +12,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw      = Mock::mock(
-            'DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
+            'GFG\DTOMarketplace\DataWrapper\PostPayment\PostPayment', 
             $this
         );
         $this->context = new Cancel($this->dw);
@@ -26,7 +26,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
     public function testExportContextData()
     {
         $item               = Mock::mock(
-            'DTOMarketplace\DataWrapper\PostPayment\Item', 
+            'GFG\DTOMarketplace\DataWrapper\PostPayment\Item', 
             $this
         );
         $hash               = 'hash';
@@ -38,7 +38,7 @@ class CancelTest extends \PHPUnit_Framework_TestCase
         $ventureOrderItemId = 321;
 
         $exportedData       = [
-            'name' => 'dtomarketplace.context.venture.postpayment.cancel',
+            'name' => 'gfg.dtomarketplace.context.venture.postpayment.cancel',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

@@ -1,8 +1,8 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Order;
+namespace GFG\DTOMarketplace\Context\Venture\Order;
 
-use DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\Context\Base;
 
 class ConfirmOrder extends Base
 {

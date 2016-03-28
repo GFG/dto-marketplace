@@ -1,8 +1,8 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Product;
+namespace GFG\DTOMarketplace\Context\Venture\Product;
 
-use DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\Context\Base;
 
 class Update extends Base
 {

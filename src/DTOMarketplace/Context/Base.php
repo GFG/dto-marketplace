@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context;
+namespace GFG\DTOMarketplace\Context;
 
 use Url\Url;
 

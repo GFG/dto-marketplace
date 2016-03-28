@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Partner\Product;
+namespace GFG\DTOMarketplace\Context\Partner\Product;
 
 use Context\DataWrapper\Mock;
 
@@ -12,7 +12,7 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Config',
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Config',
             $this
         );
         $this->context = new ConfirmCreate($this->dw);
@@ -32,7 +32,7 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
         $simpleSku  = 'simple sku';
         $partnerSimpleSku  = 'partner simple sku';
         $simple     = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Simple', 
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Simple', 
             $this
         );
 
@@ -44,7 +44,7 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getPartnerSku')->willReturn($partnerSku);
 
         $exportedData     = [
-            'name' => 'dtomarketplace.context.partner.product.confirmcreate',
+            'name' => 'gfg.dtomarketplace.context.partner.product.confirmcreate',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

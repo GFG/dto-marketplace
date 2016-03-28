@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\DataWrapper\Catalog;
+namespace GFG\DTOMarketplace\DataWrapper\Catalog;
 
 use Context\DataWrapper\Base;
 

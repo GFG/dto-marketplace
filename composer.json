@@ -1,12 +1,10 @@
 {
-    "name": "tricae/dto-marketplace",
+    "name": "gfg/dto-marketplace",
     "description": "Context objects to handle marketplace actions",
-    "keywords": ["dafiti", "tricae", "kanui"],
     "type": "library",
-    "license": "proprietary",
     "require": {
-        "tricae/dto-context": "0.1.*",
-        "tricae/dto-url": "0.1.*"
+        "gfg/dto-context": "1.0.*",
+        "gfg/dto-url": "1.0.*"
     },
     "require-dev": {
         "phploc/phploc": "@stable",
@@ -26,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DTOMarketplace\\": ["src/DTOMarketplace/", "tests/unit/src/DTOMarketplace"]
+            "GFG\\DTOMarketplace\\": ["src/DTOMarketplace/", "tests/unit/src/DTOMarketplace"]
         }
     }
 }

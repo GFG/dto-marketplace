@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\DataWrapper\Catalog;
+namespace GFG\DTOMarketplace\DataWrapper\Catalog;
 
 use Context\DataWrapper\BaseCollection;
 
@@ -11,6 +11,6 @@ class ImageCollection extends BaseCollection
      */
     public function getType()
     {
-        return 'DTOMarketplace\DataWrapper\Catalog\Image';
+        return 'GFG\DTOMarketplace\DataWrapper\Catalog\Image';
     }
 }

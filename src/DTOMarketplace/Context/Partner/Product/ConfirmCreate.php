@@ -1,8 +1,8 @@
 <?php
 
-namespace DTOMarketplace\Context\Partner\Product;
+namespace GFG\DTOMarketplace\Context\Partner\Product;
 
-use DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\Context\Base;
 
 class ConfirmCreate extends Base
 {

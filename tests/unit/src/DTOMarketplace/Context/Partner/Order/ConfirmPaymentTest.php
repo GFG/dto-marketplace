@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Partner\Order;
+namespace GFG\DTOMarketplace\Context\Partner\Order;
 
 use Context\DataWrapper\Mock;
 
@@ -12,7 +12,7 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::mock(
-            'DTOMarketplace\DataWrapper\Order\Order', 
+            'GFG\DTOMarketplace\DataWrapper\Order\Order', 
             $this
         );
         $this->context = new ConfirmPayment($this->dw);
@@ -34,7 +34,7 @@ class ConfirmPaymentTest extends \PHPUnit_Framework_TestCase
         $ventureOrderNr = 321;
 
         $exportedData   = [
-            'name' => 'dtomarketplace.context.partner.order.confirmpayment',
+            'name' => 'gfg.dtomarketplace.context.partner.order.confirmpayment',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

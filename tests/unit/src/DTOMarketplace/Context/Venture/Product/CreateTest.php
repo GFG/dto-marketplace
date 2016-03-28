@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Product;
+namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 use Context\DataWrapper\Mock;
 
@@ -12,7 +12,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Config', 
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Config', 
             $this
         );
         $this->context = new Create($this->dw);
@@ -26,11 +26,11 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     public function testExportContextData()
     {
         $simple           = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Simple',
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Simple',
             $this
         );
         $image            = Mock::mock(
-            'DTOMarketplace\DataWrapper\Catalog\Image',
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Image',
             $this
         );
 
@@ -79,7 +79,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
         //simple
         $exportedData     = [
-            'name' => 'dtomarketplace.context.venture.product.create',
+            'name' => 'gfg.dtomarketplace.context.venture.product.create',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

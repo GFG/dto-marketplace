@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\Product;
+namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 class UpdatePriceTest extends \PHPUnit_Framework_TestCase
 {
@@ -47,7 +47,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $specialToDate    = '2016-02-01 00:00:01';
         $simpleCollection = ['sku' => $skuSimple];
         $exportedData = [
-            'name' => 'dtomarketplace.context.venture.product.updateprice',
+            'name' => 'gfg.dtomarketplace.context.venture.product.updateprice',
             'info' => $info,
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),

@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context;
+namespace GFG\DTOMarketplace\Context;
 
 class Manager extends \Context\Manager
 {

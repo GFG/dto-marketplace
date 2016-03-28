@@ -1,8 +1,8 @@
 <?php
 
-namespace DTOMarketplace\Context\Venture\PostPayment;
+namespace GFG\DTOMarketplace\Context\Venture\PostPayment;
 
-use DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\Context\Base;
 
 class FailDelivery extends Base
 {

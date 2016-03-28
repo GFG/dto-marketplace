@@ -1,6 +1,6 @@
 <?php
 
-namespace DTOMarketplace\Context;
+namespace GFG\DTOMarketplace\Context;
 
 abstract class Factory extends \Context\Factory\Base
 {
