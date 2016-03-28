@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "gfg/dto-context": "1.0.*",
-        "gfg/dto-url": "1.0.*"
+        "gfg/dto-url": "1.0.*",
+        "gfg/hek": "1.0.*"
     },
     "require-dev": {
         "phploc/phploc": "@stable",

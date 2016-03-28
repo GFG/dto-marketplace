@@ -4,8 +4,9 @@ namespace GFG\DTOMarketplace\Context;
 
 use GFG\DTOUrl\Url;
 use GFG\DTOContext\Context\Base as BaseContext;
+use GFG\Hek\Interfaces\Context as ContextInterface;
 
-abstract class Base extends BaseContext
+abstract class Base extends BaseContext implements ContextInterface
 {
     /**
      * @var Url
