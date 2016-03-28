@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context;
 
-class Manager extends \Context\Manager
+class Manager extends \GFG\DTOContext\Manager
 {
     /**
      * @param string $contextName
