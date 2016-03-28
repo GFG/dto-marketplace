@@ -14,14 +14,14 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getNeighborhood()
  * @method string getRegionCode()
  * @method string getPhone()
- * @method \DTOMarketplace\DataWrapper\Order\Address setStreet(string $street)
- * @method \DTOMarketplace\DataWrapper\Order\Address setNumber(integer $number)
- * @method \DTOMarketplace\DataWrapper\Order\Address setComplement(string $complement)
- * @method \DTOMarketplace\DataWrapper\Order\Address setCity(string $city)
- * @method \DTOMarketplace\DataWrapper\Order\Address setPostcode(string $postcode)
- * @method \DTOMarketplace\DataWrapper\Order\Address setNeighborhood(string $neighborhood)
- * @method \DTOMarketplace\DataWrapper\Order\Address setRegionCode(string $regionCode)
- * @method \DTOMarketplace\DataWrapper\Order\Address setPhone(string $phone)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setStreet(string $street)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setNumber(integer $number)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setComplement(string $complement)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setCity(string $city)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setPostcode(string $postcode)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setNeighborhood(string $neighborhood)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setRegionCode(string $regionCode)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setPhone(string $phone)
  */
 class Address extends Base
 {

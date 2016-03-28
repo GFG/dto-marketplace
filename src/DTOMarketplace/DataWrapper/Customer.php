@@ -12,12 +12,12 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getLastName()
  * @method string getDocument()
  * @method string getBirthday()
- * @method \DTOMarketplace\DataWrapper\Customer setIdCustomer(integer $idCustomer)
- * @method \DTOMarketplace\DataWrapper\Customer setEmail(string $email)
- * @method \DTOMarketplace\DataWrapper\Customer setFirstName(string $firstName)
- * @method \DTOMarketplace\DataWrapper\Customer setLastName(string $lastName)
- * @method \DTOMarketplace\DataWrapper\Customer setDocument(string $document)
- * @method \DTOMarketplace\DataWrapper\Customer setBirthday(string $birthday)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setIdCustomer(integer $idCustomer)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setEmail(string $email)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setFirstName(string $firstName)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setLastName(string $lastName)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setDocument(string $document)
+ * @method \GFG\DTOMarketplace\DataWrapper\Customer setBirthday(string $birthday)
  */
 class Customer extends Base
 {

@@ -13,12 +13,12 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method float getPrice()
  * @method string getReason()
  * @method string getReasonDetail()
- * @method \DTOMarketplace\DataWrapper\Order\Item setSku(string $sku)
- * @method \DTOMarketplace\DataWrapper\Order\Item setId(integer $idSalesOrderItem)
- * @method \DTOMarketplace\DataWrapper\Order\Item setStatus(bool $status)
- * @method \DTOMarketplace\DataWrapper\Order\Item setPrice(float $price)
- * @method \DTOMarketplace\DataWrapper\Order\Item setReason(string $price)
- * @method \DTOMarketplace\DataWrapper\Order\Item setReasonDetail(string $price)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSku(string $sku)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setId(integer $idSalesOrderItem)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setStatus(bool $status)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setPrice(float $price)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setReason(string $price)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setReasonDetail(string $price)
  */
 class Item extends Base
 {

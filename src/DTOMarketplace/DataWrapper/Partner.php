@@ -9,9 +9,9 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method integer getIdIrisPartner()
  * @method integer getFkStore()
  * @method string getPartnerCode()
- * @method \DTOMarketplace\DataWrapper\Partner setIdIrisPartner(integer $idIrisPartner)
- * @method \DTOMarketplace\DataWrapper\Partner setFkStore(integer $fkStore)
- * @method \DTOMarketplace\DataWrapper\Partner setPartnerCode(string $partnerCode)
+ * @method \GFG\DTOMarketplace\DataWrapper\Partner setIdIrisPartner(integer $idIrisPartner)
+ * @method \GFG\DTOMarketplace\DataWrapper\Partner setFkStore(integer $fkStore)
+ * @method \GFG\DTOMarketplace\DataWrapper\Partner setPartnerCode(string $partnerCode)
  */
 class Partner extends Base
 {
