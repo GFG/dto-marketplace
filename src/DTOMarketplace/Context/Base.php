@@ -8,7 +8,7 @@ use GFG\DTOContext\Context\Base as BaseContext;
 abstract class Base extends BaseContext
 {
     /**
-     * @var Url\Url
+     * @var Url
      */
     protected $url;
 
