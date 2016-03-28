@@ -2,7 +2,7 @@
 
 namespace GFG\DTOMarketplace\Context;
 
-abstract class Factory extends \GFg\DTOContext\Factory\Base
+abstract class Factory extends \GFG\DTOContext\Factory\Base
 {
     const VENTURE_PRODUCT_CREATE           = 'venture.product.create';
     const VENTURE_PRODUCT_UPDATE           = 'venture.product.update';
