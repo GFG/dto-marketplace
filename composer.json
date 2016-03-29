@@ -2,6 +2,7 @@
     "name": "gfg/dto-marketplace",
     "description": "Context objects to handle marketplace actions",
     "type": "library",
+    "license": "GPL-3.0",
     "require": {
         "gfg/dto-context": "1.0.*",
         "gfg/dto-url": "1.0.*",
