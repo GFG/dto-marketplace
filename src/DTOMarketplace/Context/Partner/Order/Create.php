@@ -64,14 +64,12 @@ class Create extends Base
         }
 
         return $this->prepareExport([
-            'order_nr'        => $dataWrapper->getOrderNr(),
-            'freight_cost'    => $dataWrapper->getFreightCost(),
-            'item_collection' => $itemCollection,
-            'customer'        => $customer,
-            'addresses'       => [
-                'shipping' => $shippingAddress,
-                'billing'  => $billingAddress
-            ]
+            'order_nr'         => $dataWrapper->getOrderNr(),
+            'freight_cost'     => $dataWrapper->getFreightCost(),
+            'item_collection'  => $itemCollection,
+            'customer'         => $customer,
+            'shipping_address' => $shippingAddress,
+            'billing_address'  => $billingAddress
         ]);
     }
 }
