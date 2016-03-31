@@ -38,7 +38,7 @@ class Create extends Base
             'number'        => $shippingAddressData->getNumber(),
             'complement'    => $shippingAddressData->getComplement(),
             'city'          => $shippingAddressData->getCity(),
-            'postcode'      => $shippingAddressData->getPostCode(),
+            'postcode'      => $shippingAddressData->getPostcode(),
             'neighborhood'  => $shippingAddressData->getNeighborhood(),
             'region_code'   => $shippingAddressData->getRegionCode(),
             'phone'         => $shippingAddressData->getPhone()
@@ -49,7 +49,7 @@ class Create extends Base
             'number'        => $billingAddressData->getNumber(),
             'complement'    => $billingAddressData->getComplement(),
             'city'          => $billingAddressData->getCity(),
-            'postcode'      => $billingAddressData->getPostCode(),
+            'postcode'      => $billingAddressData->getPostcode(),
             'neighborhood'  => $billingAddressData->getNeighborhood(),
             'region_code'   => $billingAddressData->getRegionCode(),
             'phone'         => $billingAddressData->getPhone()
