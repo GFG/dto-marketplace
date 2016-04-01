@@ -39,7 +39,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::PARTNER_ORDER_CONFIRMPAYMENT     => 'Partner\Order\ConfirmPayment',
         self::PARTNER_ORDER_CANCEL             => 'Partner\Order\Cancel',
 
-        self::VENTURE_ORDER_CONFIRMORDER       => 'Venture\Order\ConfirmPayment',
+        self::VENTURE_ORDER_CONFIRMORDER       => 'Venture\Order\ConfirmOrder',
 
         self::VENTURE_POSTPAYMENT_SHIP         => 'Venture\PostPayment\Shipped',
         self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Delivered',
