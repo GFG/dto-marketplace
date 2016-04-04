@@ -22,7 +22,8 @@ class ConfirmPayment extends Base
         $dataWrapper = $this->getDataWrapper();
 
         return $this->prepareExport([
-            'order_nr' => $dataWrapper->getOrderNr()
+            'order_nr'          => $dataWrapper->getOrderNr(),
+            'venture_order_nr'  => $dataWrapper->getVentureOrderNr()
         ]);
     }
 }

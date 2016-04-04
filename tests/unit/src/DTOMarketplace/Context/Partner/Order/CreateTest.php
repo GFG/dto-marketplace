@@ -152,10 +152,8 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                     ],
                 ],
                 'customer'        => $customer,
-                'addresses'       => [
-                    'shipping' => $shippingAddress, 
-                    'billing'  => $billingAddress 
-                ]
+                'shipping_address' => $shippingAddress, 
+                'billing_address'  => $billingAddress 
             ]
         ];
 

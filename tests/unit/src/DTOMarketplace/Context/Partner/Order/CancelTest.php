@@ -37,7 +37,8 @@ class CancelTest extends \PHPUnit_Framework_TestCase
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),
             'data' => [
-                'order_nr' => $orderNr
+                'order_nr' => $orderNr,
+                'venture_order_nr' => null
             ]
         ];
 
