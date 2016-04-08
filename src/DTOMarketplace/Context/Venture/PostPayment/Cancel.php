@@ -24,9 +24,9 @@ class Cancel extends Base
         $items = [];
         foreach ($dataWrapper->getItemCollection() as $item) {
             $items[] = [
-            'reason'                => $item->getReason(),
-            'reason_detail'         => $item->getReasonDetail(),
-            'venture_order_item_id' => $item->getVentureOrderItemId()
+                'reason'                => $item->getReason(),
+                'reason_detail'         => $item->getReasonDetail(),
+                'venture_order_item_id' => $item->getVentureOrderItemId()
             ];
         }
 
