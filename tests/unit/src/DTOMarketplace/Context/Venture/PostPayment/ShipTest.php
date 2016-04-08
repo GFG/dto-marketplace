@@ -40,8 +40,6 @@ class ShipTest extends \PHPUnit_Framework_TestCase
         $ventureOrderNr     = 1234;
         $ventureOrderItemId = 321;
         $partnerCode        = 'partner code';
-        $reason             = 'reason';
-        $reasonDetail       = 'reason detail';
 
         $exportedData       = [
             'name' => 'gfg.dtomarketplace.context.venture.postpayment.ship',
@@ -56,9 +54,7 @@ class ShipTest extends \PHPUnit_Framework_TestCase
                     'nfe_key'               => $nfeKey,
                     'delivery_type'         => $deliveryType,
                     'shipping_provider'     => $shippingProvider,
-                    'venture_order_item_id' => $ventureOrderItemId,
-                    'reason'                => $reason,
-                    'reason_detail' => $reasonDetail
+                    'venture_order_item_id' => $ventureOrderItemId
                 ]]
             ]
         ];
@@ -72,8 +68,6 @@ class ShipTest extends \PHPUnit_Framework_TestCase
         $item->method('getDeliveryType')->willReturn($deliveryType);
         $item->method('getShippingProvider')->willReturn($shippingProvider);
         $item->method('getVentureOrderItemId')->willReturn($ventureOrderItemId);
-        $item->method('getReason')->willReturn($reason);
-        $item->method('getReasonDetail')->willReturn($reasonDetail);
 
         $this->assertSame($exportedData, $this->context->exportContextData());
     }
