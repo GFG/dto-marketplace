@@ -41,10 +41,10 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
 
         self::VENTURE_ORDER_CONFIRMORDER       => 'Venture\Order\ConfirmOrder',
 
-        self::VENTURE_POSTPAYMENT_SHIP         => 'Venture\PostPayment\Shipped',
-        self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Delivered',
-        self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailedDelivery',
-        self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Canceled',
+        self::VENTURE_POSTPAYMENT_SHIP         => 'Venture\PostPayment\Ship',
+        self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Deliver',
+        self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailDelivery',
+        self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Cancel',
     ];
 
     /**
