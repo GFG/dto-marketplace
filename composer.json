@@ -15,14 +15,16 @@
         "phpunit/phpunit": "@stable",
         "phpunit/php-invoker": "@stable",
         "phpmd/phpmd" : "@stable",
-        "squizlabs/php_codesniffer": "@stable"
+        "squizlabs/php_codesniffer": "@stable",
+        "sstalle/php7cc": "@stable"
     },
     "scripts": {
         "test": "./vendor/bin/phpunit --colors=always -c tests/ || true",
         "coverage": "./vendor/bin/phpunit --colors=always -c tests/ --coverage-text || true",
         "md": "./vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode || true",
         "cs": "./vendor/bin/phpcs --standard=PSR2 src/ || true",
-        "fix-cs": "./vendor/bin/phpcbf --standard=PSR2 src/ || true"
+        "fix-cs": "./vendor/bin/phpcbf --standard=PSR2 src/ || true",
+        "php7cc": "./vendor/bin/php7cc src/ || true"
     },
     "autoload": {
         "psr-4": {
