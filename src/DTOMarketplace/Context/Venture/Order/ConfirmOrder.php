@@ -24,6 +24,7 @@ class ConfirmOrder extends Base
 
         foreach ($dataWrapper->getItemCollection() as $item) {
             $itemCollection[] = [
+                'id'            => $item->getId(),
                 'venture_id'    => $item->getVentureId(),
                 'sku'           => $item->getSku(),
                 'status'        => $item->getStatus(),
