@@ -31,7 +31,7 @@ class Cancel extends Base
         }
 
         return $this->prepareExport([
-            'venture_order_nr' => $dataWrapper->getVentureOrderNR(),
+            'venture_order_nr' => $dataWrapper->getVentureOrderNr(),
             'item_collection'  => $items
         ]);
     }

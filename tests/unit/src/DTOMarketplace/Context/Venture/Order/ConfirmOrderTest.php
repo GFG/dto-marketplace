@@ -26,6 +26,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
     public function testExportContextData()
     {
         $info           = [];
+        $id             = 1;
         $salesOrderId   = 1;
         $sku            = 'sku';
         $orderNr        = 'order nr';
@@ -40,6 +41,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
             $this
         );
 
+        $item->method('getId')->willReturn($salesOrderId);
         $item->method('getVentureId')->willReturn($salesOrderId);
         $item->method('getSku')->willReturn($sku);
         $item->method('getStatus')->willReturn($status);
@@ -60,6 +62,7 @@ class ConfirmOrderTest extends \PHPUnit_Framework_TestCase
                 'reason_detail'    => $reasonDetail,
                 'item_collection'  => [
                     [
+                        'id'                  => $id,
                         'venture_id'          => $salesOrderId,
                         'sku'                 => $sku,
                         'status'              => $status,
