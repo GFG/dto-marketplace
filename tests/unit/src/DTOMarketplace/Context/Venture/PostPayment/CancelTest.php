@@ -44,10 +44,12 @@ class CancelTest extends \PHPUnit_Framework_TestCase
             'data_wrapper' => get_class($this->dw),
             'data' => [
                 'venture_order_nr' => $ventureOrderNr,
+                'order_nr' => null,
                 'item_collection' => [[
                     'reason'                => $reason,
                     'reason_detail'         => $reasonDetail,
                     'venture_order_item_id' => $ventureOrderItemId,
+                    'order_item_id' => null
                 ]]
             ]
         ];

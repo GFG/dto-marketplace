@@ -29,12 +29,14 @@ class Ship extends Base
                 'nfe_key'               => $item->getNfeKey(),
                 'delivery_type'         => $item->getDeliveryType(),
                 'shipping_provider'     => $item->getShippingProvider(),
-                'venture_order_item_id' => $item->getVentureOrderItemId()
+                'venture_order_item_id' => $item->getVentureOrderItemId(),
+                'order_item_id'         => $item->getOrderItemId()
             ];
         }
 
         return $this->prepareExport([
             'venture_order_nr' => $dataWrapper->getVentureOrderNr(),
+            'order_nr'         => $dataWrapper->getOrderNr(),
             'item_collection'  => $items
         ]);
     }
