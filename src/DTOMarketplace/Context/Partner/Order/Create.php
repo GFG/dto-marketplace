@@ -11,7 +11,7 @@ class Create extends Base
      */
     public function getHttpMethod()
     {
-        return 'put';
+        return 'post';
     }
 
     /**
