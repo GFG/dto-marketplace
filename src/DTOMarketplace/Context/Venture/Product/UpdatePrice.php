@@ -24,12 +24,14 @@ class UpdatePrice extends Base
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'sku' => $simple->getSku()
+                'sku'           => $simple->getSku(),
+                'partner_sku'   => $simple->getPartnerSku()
             ];
         }
 
         return $this->prepareExport([
             'sku'               => $dataWrapper->getSku(),
+            'partner_sku'       => $dataWrapper->getPartnerSku(),
             'price'             => $dataWrapper->getPrice(),
             'special_price'     => $dataWrapper->getSpecialPrice(),
             'special_from_date' => $dataWrapper->getSpecialFromDate(),

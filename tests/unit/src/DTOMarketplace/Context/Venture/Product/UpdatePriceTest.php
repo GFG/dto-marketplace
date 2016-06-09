@@ -12,6 +12,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $this->dw = $this->getMockBuilder('GFG\DTOContext\DataWrapper\DataWrapperInterface')
             ->setMethods([
                 'getSku',       
+                'getPartnerSku',       
                 'getPrice',       
                 'getSpecialPrice',       
                 'getSpecialFromDate',       
@@ -24,6 +25,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $this->dwSimple = $this->getMockBuilder('GFG\DTOContext\DataWrapper\DataWrapperInterface')
             ->setMethods([
                 'getSku',
+                'getPartnerSku',
                 'toArray'
             ])
             ->getMock();
@@ -45,7 +47,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
         $specialPrice     = 50.00;
         $specialFromDate  = '2016-01-01 00:00:01';
         $specialToDate    = '2016-02-01 00:00:01';
-        $simpleCollection = ['sku' => $skuSimple];
+        $simpleCollection = ['sku' => $skuSimple, 'partner_sku' => null];
         $exportedData = [
             'name' => 'gfg.dtomarketplace.context.venture.product.updateprice',
             'info' => $info,
@@ -53,6 +55,7 @@ class UpdatePriceTest extends \PHPUnit_Framework_TestCase
             'data_wrapper' => get_class($this->dw),
             'data' => [
                 'sku'               => $skuConfig,
+                'partner_sku'       => null,
                 'price'             => $price,
                 'special_price'     => $specialPrice,
                 'special_from_date' => $specialFromDate,

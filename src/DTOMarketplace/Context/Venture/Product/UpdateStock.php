@@ -24,13 +24,15 @@ class UpdateStock extends Base
 
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'sku'      => $simple->getSku(),
-                'quantity' => $simple->getQuantity(),
+                'sku'           => $simple->getSku(),
+                'partner_sku'   => $simple->getPartnerSku(),
+                'quantity'      => $simple->getQuantity(),
             ];
         }
 
         return $this->prepareExport([
             'sku'               => $dataWrapper->getSku(),
+            'partner_sku'       => $dataWrapper->getPartnerSku(),
             'simple_collection' => $simpleCollection
         ]);
     }

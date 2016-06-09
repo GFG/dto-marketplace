@@ -40,8 +40,10 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
             'data_wrapper' => get_class($this->dw),
             'data' => [
                 'sku' => 'sku config',
+                'partner_sku' => null,
                 'simple_collection' => [[
                     'sku' => $skuSimple,
+                    'partner_sku' => null,
                     'quantity'   => $quantity
                 ]]
             ]
