@@ -169,6 +169,6 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
     public function testGetHttpMethod()
     {
-        $this->assertSame('put', $this->context->getHttpMethod());
+        $this->assertSame('post', $this->context->getHttpMethod());
     }
 }
