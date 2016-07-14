@@ -23,6 +23,9 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     const VENTURE_POSTPAYMENT_FAILDELIVERY = 'venture.postpayment.faildelivery';
     const VENTURE_POSTPAYMENT_CANCEL       = 'venture.postpayment.cancel';
 
+    const VENTURE_ENTITY_CREATE            = 'venture.entity.create';
+    const VENTURE_ENTITY_UPDATE            = 'venture.entity.update';
+
     /**
      * @var array
      */
@@ -45,6 +48,9 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Deliver',
         self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailDelivery',
         self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Cancel',
+
+        self::VENTURE_ENTITY_CREATE            => 'Venture\Entity\Create',
+        self::VENTURE_ENTITY_UPDATE            => 'Venture\Entity\Update'
     ];
 
     /**
