@@ -26,6 +26,7 @@ class Create extends Base
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
                 'sku'         => $simple->getSku(),
+                'partner_sku' => $simple->getPartnerSku(),
                 'variation'   => $simple->getVariation(),
                 'quantity'    => $simple->getQuantity(),
                 'ean'         => $simple->getEan(),
@@ -42,6 +43,7 @@ class Create extends Base
 
         return $this->prepareExport([
             'sku'               => $dataWrapper->getSku(),
+            'partner_sku'       => $dataWrapper->getPartnerSku(),
             'name'              => $dataWrapper->getName(),
             'description'       => $dataWrapper->getDescription(),
             'brand'             => $dataWrapper->getBrand(),
