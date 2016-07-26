@@ -81,7 +81,8 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                         'sku'         => $simpleSku,
                         'partner_sku' => $simpleSku,
                         'variation'   => $variation,
-                        'ean'         => $ean
+                        'ean'         => $ean,
+                        'attributes'  => $attributes
                     ]
                 ],
                 'status'            => $status
@@ -92,6 +93,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $simple->method('getPartnerSku')->willReturn($simpleSku);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getEan')->willReturn($ean);
+        $simple->method('getAttributes')->willReturn($attributes);
 
         $image->method('getUrl')->willReturn($url);
         $image->method('getPosition')->willReturn($position);

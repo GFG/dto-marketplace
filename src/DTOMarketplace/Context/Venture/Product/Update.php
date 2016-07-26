@@ -29,7 +29,8 @@ class Update extends Base
                 'sku'         => $simple->getSku(),
                 'partner_sku' => $simple->getPartnerSku(),
                 'variation'   => $simple->getVariation(),
-                'ean'         => $simple->getEan()
+                'ean'         => $simple->getEan(),
+                'attributes'  => $simple->getAttributes()
             ];
         }
 
