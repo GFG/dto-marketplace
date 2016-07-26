@@ -63,7 +63,8 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku'       => $sku,
+                'sku'               => $sku,
+                'partner_sku'       => $sku,
                 'name'              => $name,
                 'description'       => $description,
                 'brand'             => $brand,
@@ -77,9 +78,10 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                 ],
                 'simple_collection' => [
                     [
-                        'sku'       => $simpleSku,
-                        'variation' => $variation,
-                        'ean'       => $ean
+                        'sku'         => $simpleSku,
+                        'partner_sku' => $simpleSku,
+                        'variation'   => $variation,
+                        'ean'         => $ean
                     ]
                 ],
                 'status'            => $status
@@ -87,6 +89,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         ];
 
         $simple->method('getSku')->willReturn($simpleSku);
+        $simple->method('getPartnerSku')->willReturn($simpleSku);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getEan')->willReturn($ean);
 
@@ -94,6 +97,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $image->method('getPosition')->willReturn($position);
 
         $this->dw->method('getSku')->willReturn($sku);
+        $this->dw->method('getPartnerSku')->willReturn($sku);
         $this->dw->method('getName')->willReturn($name);
         $this->dw->method('getDescription')->willReturn($description);
         $this->dw->method('getBrand')->willReturn($brand);

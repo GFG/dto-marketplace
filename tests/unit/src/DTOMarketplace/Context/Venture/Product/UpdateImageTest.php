@@ -42,7 +42,8 @@ class UpdateImageTest extends \PHPUnit_Framework_TestCase
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),
             'data' => [
-                'sku' => $sku,
+                'sku'              => $sku,
+                'partner_sku'      => $sku,
                 'image_collection' => [[
                     'position' => $position,
                     'url'      => $url
@@ -54,6 +55,7 @@ class UpdateImageTest extends \PHPUnit_Framework_TestCase
         $this->dwImage->method('getUrl')->willReturn($url);
 
         $this->dw->method('getSku')->willReturn($sku); 
+        $this->dw->method('getPartnerSku')->willReturn($sku); 
         $this->dw->method('getImageCollection')->willReturn([$this->dwImage]);
 
         $this->assertSame($exportedData, $this->context->exportContextData());

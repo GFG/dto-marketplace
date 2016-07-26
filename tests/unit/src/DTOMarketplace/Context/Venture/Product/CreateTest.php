@@ -68,7 +68,8 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         ];
         $simpleCollection = [
             [
-                'sku' => $skuSimple,
+                'sku'         => $skuSimple,
+                'partner_sku' => $skuSimple,
                 'variation'   => $variation,
                 'quantity'    => $quantity,
                 'ean'         => $ean,
@@ -85,6 +86,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             'data_wrapper' => get_class($this->dw),
             'data' => [
                 'sku'               => $sku,
+                'partner_sku'       => $sku,
                 'name'              => $name,
                 'description'       => $description,
                 'brand'             => $brand,
@@ -103,11 +105,13 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $image->method('getPosition')->willReturn($position);
 
         $simple->method('getSku')->willReturn($skuSimple);
+        $simple->method('getPartnerSku')->willReturn($skuSimple);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getQuantity')->willReturn($quantity);
         $simple->method('getEan')->willReturn($ean);
 
         $this->dw->method('getSku')->willReturn($sku);
+        $this->dw->method('getPartnerSku')->willReturn($sku);
         $this->dw->method('getName')->willReturn($name);
         $this->dw->method('getDescription')->willReturn($description);
         $this->dw->method('getbrand')->willReturn($brand);
