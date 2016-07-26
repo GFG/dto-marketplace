@@ -32,6 +32,7 @@ class UpdateImage extends Base
         return $this->prepareExport(
             [
                 'sku'              => $dataWrapper->getSku(),
+                'partner_sku'      => $dataWrapper->getPartnerSku(),
                 'image_collection' => $imageCollection
             ]
         );
