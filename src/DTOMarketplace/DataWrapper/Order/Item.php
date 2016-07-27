@@ -13,12 +13,16 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method float getPrice()
  * @method string getReason()
  * @method string getReasonDetail()
+ * @method string getShipmentType()
+ * @method string getSupplierDeliveryTime()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSku(string $sku)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setId(integer $idSalesOrderItem)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setStatus(bool $status)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setPrice(float $price)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setReason(string $price)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setReasonDetail(string $price)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setShipmentType(string $shipmentType)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSupplierDeliveryTime(string $supplierDeliveryTime)
  */
 class Item extends Base
 {
@@ -29,4 +33,6 @@ class Item extends Base
     private $status;
     private $reason;
     private $reasonDetail;
+    private $shipmentType;
+    private $supplierDeliveryTime;
 }
