@@ -59,7 +59,9 @@ class Create extends Base
             $itemCollection[] = [
                 'id'    => $item->getId(),
                 'sku'   => $item->getSku(),
-                'price' => $item->getPrice()
+                'price' => $item->getPrice(),
+                'shipment_type' => $item->getShipmentType(),
+                'supplier_delivery_time' => $item->getSupplierDeliveryTime(),
             ];
         }
 

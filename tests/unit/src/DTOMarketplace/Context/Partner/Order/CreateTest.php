@@ -29,12 +29,16 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $id             = 1;
         $price          = 10.00;
         $idSalesOrderItem = 1;
+        $supplierDeliveryTime = 321;
+        $shipmentType = 222;
 
         //items
         $item = Mock::create('GFG\DTOMarketplace\DataWrapper\Order\Item', $this);
         $item->method('getId')->willReturn($idSalesOrderItem);
         $item->method('getSku')->willReturn($sku);
         $item->method('getPrice')->willReturn($price);
+        $item->method('getShipmentType')->willReturn($shipmentType);
+        $item->method('getSupplierDeliveryTime')->willReturn($supplierDeliveryTime);
 
         $itemCollection = [$item];
 
@@ -148,7 +152,9 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                     0 =>[
                         'id'    => $idSalesOrderItem,
                         'sku'   => $sku,
-                        'price' => $price
+                        'price' => $price,
+                        'shipment_type' => $shipmentType,
+                        'supplier_delivery_time' => $supplierDeliveryTime,
                     ],
                 ],
                 'customer'        => $customer,
