@@ -28,6 +28,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getCustomercarePostcode()
  * @method string getCustomercareCountry()
  * @method string getStatus()
+ * @method array getSellerCustomInformation()
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setIdIrisVenture(integer $idIrisVenture)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setFkCatalogSupplier(integer $fkCatalogSupplier)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setVentureCode(string $VentureCode)
@@ -50,6 +51,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setCustomercarePostcode(string $customercarePostcode)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setCustomercareCountry(string $customercareCountry)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setStatus(string $status)
+ * @method \GFG\DTOMarketplace\DataWrapper\Venture setSellerCustomInformation(array $sellerCustomInformation)
  */
 class Venture extends Base
 {
@@ -76,4 +78,5 @@ class Venture extends Base
     private $customercarePostcode;
     private $customercareCountry;
     private $status;
+    private $sellerCustomInformation;
 }
