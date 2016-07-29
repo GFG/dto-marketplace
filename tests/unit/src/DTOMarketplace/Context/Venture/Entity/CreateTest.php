@@ -47,6 +47,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $customercarePostcode = 20;
         $customercareCountry = 21;
         $status = 22;
+        $sellerCustomInformation = [1,2,3];
 
         $this->dw->method('getIdIrisVenture')->willReturn($idIrisVenture);
         $this->dw->method('getFkCatalogSupplier')->willReturn($fkCatalogSupplier);
@@ -70,6 +71,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getCustomercarePostcode')->willReturn($customercarePostcode);
         $this->dw->method('getCustomercareCountry')->willReturn($customercareCountry);
         $this->dw->method('getStatus')->willReturn($status);
+        $this->dw->method('getSellerCustomInformation')->willReturn($sellerCustomInformation);
 
         $exportedData = [
             'name' => 'gfg.dtomarketplace.context.venture.entity.create',
@@ -77,28 +79,29 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             'hash' => $this->context->getHash(),
             'data_wrapper' => get_class($this->dw),
             'data' => [
-                'id_iris_venture'       => $idIrisVenture,
-                'fk_catalog_supplier'   => $fkCatalogSupplier,
-                'venture_code'          => $ventureCode,
-                'id'                    => $id,
-                'email'                 => $email,
-                'company_name'          => $companyName,
-                'shop_name'             => $shopName,
-                'phone'                 => $phone,
-                'address1'              => $address1,
-                'address2'              => $address2,
-                'city'                  => $city,
-                'postcode'              => $postcode,
-                'country'               => $country,
-                'customercare_email'    => $customercareEmail,
-                'customercare_name'     => $customercareName,
-                'customercare_phone'    => $customercarePhone,
-                'customercare_address1' => $customercareAddress1,
-                'customercare_address2' => $customercareAddress2,
-                'customercare_city'     => $customercareCity,
-                'customercare_postcode' => $customercarePostcode,
-                'customercare_country'  => $customercareCountry,
-                'status'                => $status
+                'id_iris_venture'           => $idIrisVenture,
+                'fk_catalog_supplier'       => $fkCatalogSupplier,
+                'venture_code'              => $ventureCode,
+                'id'                        => $id,
+                'email'                     => $email,
+                'company_name'              => $companyName,
+                'shop_name'                 => $shopName,
+                'phone'                     => $phone,
+                'address1'                  => $address1,
+                'address2'                  => $address2,
+                'city'                      => $city,
+                'postcode'                  => $postcode,
+                'country'                   => $country,
+                'customercare_email'        => $customercareEmail,
+                'customercare_name'         => $customercareName,
+                'customercare_phone'        => $customercarePhone,
+                'customercare_address1'     => $customercareAddress1,
+                'customercare_address2'     => $customercareAddress2,
+                'customercare_city'         => $customercareCity,
+                'customercare_postcode'     => $customercarePostcode,
+                'customercare_country'      => $customercareCountry,
+                'status'                    => $status,
+                'seller_custom_information' => $sellerCustomInformation
             ]
         ];
 
