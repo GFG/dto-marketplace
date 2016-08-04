@@ -19,6 +19,8 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getAttributeSet()
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\ImageCollection getImageCollection()
  * @method string getStatus()
+ * @method string getShipmentType()
+ * @method string getSupplierDeliveryTime()
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\SimpleCollection getSimpleCollection()
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setSku(string $sku)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setPartnerSku(string $partnerSKu)
@@ -34,6 +36,8 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setImageCollection(\GFG\DTOMarketplace\DataWrapper\Catalog\ImageCollection $imageCollection)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setSimpleCollection(\GFG\DTOMarketplace\DataWrapper\Catalog\SimpleCollection $simpleCollection)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setStatus(string $status)
+ * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setShipmentType(string $shipmentType)
+ * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Config setSupplierDeliveryTime(string $supplierDeliveryTime)
  */
 class Config extends Base
 {
@@ -51,4 +55,6 @@ class Config extends Base
     private $imageCollection;
     private $simpleCollection;
     private $status;
+    private $shipmentType;
+    private $supplierDeliveryTime;
 }

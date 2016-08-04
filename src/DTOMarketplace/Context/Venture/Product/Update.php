@@ -51,8 +51,9 @@ class Update extends Base
             'attribute_set'     => $dataWrapper->getAttributeSet(),
             'image_collection'  => $imageCollection,
             'simple_collection' => $simpleCollection,
-            'status'            => $dataWrapper->getStatus()
+            'status'            => $dataWrapper->getStatus(),
+            'supplier_delivery_time' => $dataWrapper->getSupplierDeliveryTime(),
+            'shipment_type' => $dataWrapper->getShipmentType(),
         ]);
-
     }
 }

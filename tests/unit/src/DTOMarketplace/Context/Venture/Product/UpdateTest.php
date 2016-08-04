@@ -47,6 +47,8 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $attributes       = ['attribute 1' => 1];
         $attributeSet     = 2;
         $status           = 'active'; 
+        $shipmentType     = '1'; 
+        $supplierDeliveryTime = '100'; 
 
         //image
         $url              = 'http://site.com/image.jpg';
@@ -85,7 +87,9 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                         'attributes'  => $attributes
                     ]
                 ],
-                'status'            => $status
+                'status'            => $status,
+                'supplier_delivery_time' => $supplierDeliveryTime,
+                'shipment_type'     => $shipmentType
             ]
         ];
 
@@ -106,6 +110,8 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getAttributes')->willReturn($attributes);
         $this->dw->method('getAttributeSet')->willReturn($attributeSet);
         $this->dw->method('getStatus')->willReturn($status);
+        $this->dw->method('getShipmentType')->willReturn($shipmentType);
+        $this->dw->method('getSupplierDeliveryTime')->willReturn($supplierDeliveryTime);
         $this->dw->method('getImageCollection')->willReturn([$image]);
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
 
