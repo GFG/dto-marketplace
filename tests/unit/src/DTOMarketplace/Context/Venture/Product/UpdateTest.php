@@ -58,6 +58,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $simpleSku        = 'simple sku'; 
         $variation        = 'variation';
         $ean              = 'ean';
+        $simpleStatus     = 'inactive';
 
         $exportedData     = [
             'name' => 'gfg.dtomarketplace.context.venture.product.update',
@@ -84,12 +85,13 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                         'partner_sku' => $simpleSku,
                         'variation'   => $variation,
                         'ean'         => $ean,
-                        'attributes'  => $attributes
+                        'attributes'  => $attributes,
+                        'status'      => $simpleStatus
                     ]
                 ],
-                'status'            => $status,
                 'supplier_delivery_time' => $supplierDeliveryTime,
-                'shipment_type'     => $shipmentType
+                'shipment_type'     => $shipmentType,
+                'status'            => $status
             ]
         ];
 
@@ -98,6 +100,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getEan')->willReturn($ean);
         $simple->method('getAttributes')->willReturn($attributes);
+        $simple->method('getStatus')->willReturn($simpleStatus);
 
         $image->method('getUrl')->willReturn($url);
         $image->method('getPosition')->willReturn($position);

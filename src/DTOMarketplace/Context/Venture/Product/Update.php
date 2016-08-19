@@ -30,7 +30,8 @@ class Update extends Base
                 'partner_sku' => $simple->getPartnerSku(),
                 'variation'   => $simple->getVariation(),
                 'ean'         => $simple->getEan(),
-                'attributes'  => $simple->getAttributes()
+                'attributes'  => $simple->getAttributes(),
+                'status'      => $simple->getStatus()
             ];
         }
 
@@ -42,18 +43,18 @@ class Update extends Base
         }
 
         return $this->prepareExport([
-            'sku'               => $dataWrapper->getSku(),
-            'partner_sku'       => $dataWrapper->getPartnerSku(),
-            'name'              => $dataWrapper->getName(),
-            'description'       => $dataWrapper->getDescription(),
-            'brand'             => $dataWrapper->getBrand(),
-            'attributes'        => $dataWrapper->getAttributes(),
-            'attribute_set'     => $dataWrapper->getAttributeSet(),
-            'image_collection'  => $imageCollection,
-            'simple_collection' => $simpleCollection,
-            'status'            => $dataWrapper->getStatus(),
+            'sku'                    => $dataWrapper->getSku(),
+            'partner_sku'            => $dataWrapper->getPartnerSku(),
+            'name'                   => $dataWrapper->getName(),
+            'description'            => $dataWrapper->getDescription(),
+            'brand'                  => $dataWrapper->getBrand(),
+            'attributes'             => $dataWrapper->getAttributes(),
+            'attribute_set'          => $dataWrapper->getAttributeSet(),
+            'image_collection'       => $imageCollection,
+            'simple_collection'      => $simpleCollection,
             'supplier_delivery_time' => $dataWrapper->getSupplierDeliveryTime(),
-            'shipment_type' => $dataWrapper->getShipmentType(),
+            'shipment_type'          => $dataWrapper->getShipmentType(),
+            'status'                 => $dataWrapper->getStatus()
         ]);
     }
 }
