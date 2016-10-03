@@ -16,6 +16,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getShipmentType()
  * @method string getSupplierDeliveryTime()
  * @method string getSellerId()
+ * @method string getSkuSupplier()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSku(string $sku)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setId(integer $idSalesOrderItem)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setStatus(bool $status)
@@ -25,6 +26,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setShipmentType(string $shipmentType)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSupplierDeliveryTime(string $supplierDeliveryTime)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSellerId(string $sellerId)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Item setSkuSupplier(string $skuSupplier)
  */
 class Item extends Base
 {
@@ -38,4 +40,5 @@ class Item extends Base
     private $shipmentType;
     private $supplierDeliveryTime;
     private $sellerId;
+    private $skuSupplier;
 }
