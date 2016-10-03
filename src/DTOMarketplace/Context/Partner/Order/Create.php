@@ -62,6 +62,7 @@ class Create extends Base
                 'price' => $item->getPrice(),
                 'shipment_type' => $item->getShipmentType(),
                 'supplier_delivery_time' => $item->getSupplierDeliveryTime(),
+                'seller_id' => $item->getSellerId(),
             ];
         }
 

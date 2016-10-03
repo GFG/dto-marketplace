@@ -30,6 +30,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $price          = 10.00;
         $idSalesOrderItem = 1;
         $supplierDeliveryTime = 321;
+        $sellerId = 1;
         $shipmentType = 222;
 
         //items
@@ -39,6 +40,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $item->method('getPrice')->willReturn($price);
         $item->method('getShipmentType')->willReturn($shipmentType);
         $item->method('getSupplierDeliveryTime')->willReturn($supplierDeliveryTime);
+        $item->method('getSellerId')->willReturn($sellerId);
 
         $itemCollection = [$item];
 
@@ -155,6 +157,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                         'price' => $price,
                         'shipment_type' => $shipmentType,
                         'supplier_delivery_time' => $supplierDeliveryTime,
+                        'seller_id' => $sellerId,
                     ],
                 ],
                 'customer'        => $customer,
