@@ -10,6 +10,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     const VENTURE_PRODUCT_UPDATEPRICE      = 'venture.product.updateprice';
     const VENTURE_PRODUCT_UPDATEIMAGE      = 'venture.product.updateimage';
     const VENTURE_PRODUCT_DELETE           = 'venture.product.delete';
+    const VENTURE_PRODUCT_GET              = 'venture.product.get';
 
     const PARTNER_PRODUCT_CONFIRMCREATE    = 'partner.product.confirmcreate';
 
@@ -38,6 +39,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::VENTURE_PRODUCT_UPDATEPRICE      => 'Venture\Product\UpdatePrice',
         self::VENTURE_PRODUCT_UPDATEIMAGE      => 'Venture\Product\UpdateImage',
         self::VENTURE_PRODUCT_DELETE           => 'Venture\Product\Delete',
+        self::VENTURE_PRODUCT_GET              => 'Venture\Product\Get',
 
         self::PARTNER_PRODUCT_CONFIRMCREATE    => 'Partner\Product\ConfirmCreate',
 
