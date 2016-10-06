@@ -180,14 +180,14 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                 'item_collection' => [
                     0 =>[
                         'id'    => $idSalesOrderItem,
+                        'sku'   => $sku,
+                        'price' => $price,
                         'unit_price' => $unitPrice,
                         'tax_amount' => $taxAmount,
                         'tax_percent' => $taxPercent,
+                        'shipment_type' => $shipmentType,
                         'shipment_date' => $shipmentDate,
                         'shipment_fee' => $shipmentFee,
-                        'sku'   => $sku,
-                        'price' => $price,
-                        'shipment_type' => $shipmentType,
                         'supplier_delivery_time' => $supplierDeliveryTime,
                         'seller_id' => $sellerId,
                         'sku_supplier' => $skuSupplier,
@@ -211,7 +211,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getShippingAddress')->willReturn($shippingAddressDataWrapper);
         $this->dw->method('getBillingAddress')->willReturn($billingAddressDataWrapper);
 
-        $this->assertEquals($exportedData, $this->context->exportContextData());
+        $this->assertSame($exportedData, $this->context->exportContextData());
     }
 
     public function testGetHttpMethod()
