@@ -16,6 +16,11 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getStatus()
  * @method string getReason()
  * @method string getReasonDetail()
+ * @method string getPaymentMethod()
+ * @method string getVoucherCode()
+ * @method string getGiftOption()
+ * @method string getGiftMessage()
+ * @method string getCreatedAt()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setOrderNr(string $orderNr)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setVentureOrderNr(string $ventureOrderNr)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setCustomer(\GFG\DTOMarketplace\DataWrapper\Customer $customer)
@@ -26,6 +31,11 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setStatus(string $status)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setReason(string $reason)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setReasonDetail(string $reasonDetail)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setPaymentMethod(string $paymentMethod)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setVoucherCode(string $voucherCode)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setGiftOption(string $giftOption)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setGiftMessage(string $giftMessage)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setCreatedAt(string $createdAt)
  */
 class Order extends Base
 {
@@ -39,4 +49,9 @@ class Order extends Base
     private $status;
     private $reason;
     private $reasonDetail;
+    private $paymentMethod;
+    private $voucherCode;
+    private $giftOption;
+    private $giftMessage;
+    private $createdAt;
 }
