@@ -42,6 +42,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $giftMessage = 'gm';
         $sellerId = 'si';
         $skuSupplier = 'ss';
+        $bobOrderId = 'champs';
 
 
         //items
@@ -171,6 +172,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             'data_wrapper' => get_class($this->dw),
             'data' => [
                 'order_nr'        => $orderNr,
+                'bob_order_id'    => $bobOrderId,
                 'payment_method'  => $paymentMethod,
                 'voucher_code'    => $voucherCode,
                 'gift_option'     => $giftOption,
@@ -200,6 +202,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->dw->method('getOrderNr')->willReturn($orderNr);
+        $this->dw->method('getBobOrderId')->willReturn($bobOrderId);
         $this->dw->method('getPaymentMethod')->willReturn($paymentMethod);
         $this->dw->method('getVoucherCode')->willReturn($voucherCode);
         $this->dw->method('getGiftOption')->willReturn($giftOption);
