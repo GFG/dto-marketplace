@@ -76,6 +76,7 @@ class Create extends Base
 
         return $this->prepareExport([
             'order_nr'         => $dataWrapper->getOrderNr(),
+            'bob_order_id'     => $dataWrapper->getBobOrderId(),
             'payment_method'   => $dataWrapper->getPaymentMethod(),
             'voucher_code'     => $dataWrapper->getVoucherCode(),
             'gift_option'      => $dataWrapper->getGiftOption(),

@@ -7,6 +7,7 @@ use GFG\DTOContext\DataWrapper\Base;
 /**
  * @SuppressWarnings(PHPMD.UnusedPrivateField)
  * @method string getOrderNr()
+ * @method string getBobOrderId()
  * @method string getVentureOrderNr()
  * @method \GFG\DTOMarketplace\DataWrapper\Customer getCustomer()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address getShippingAddress()
@@ -22,6 +23,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getGiftMessage()
  * @method string getCreatedAt()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setOrderNr(string $orderNr)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setBobOrderId(string $bobOrderId)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setVentureOrderNr(string $ventureOrderNr)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setCustomer(\GFG\DTOMarketplace\DataWrapper\Customer $customer)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setShippingAddress(\GFG\DTOMarketplace\DataWrapper\Order\Address $shippingAddress)
@@ -40,6 +42,7 @@ use GFG\DTOContext\DataWrapper\Base;
 class Order extends Base
 {
     private $orderNr;
+    private $bobOrderId;
     private $ventureOrderNr;
     private $customer;
     private $billingAddress;
