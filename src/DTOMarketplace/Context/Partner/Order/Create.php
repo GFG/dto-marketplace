@@ -41,7 +41,8 @@ class Create extends Base
             'postcode'      => $shippingAddressData->getPostcode(),
             'neighborhood'  => $shippingAddressData->getNeighborhood(),
             'region_code'   => $shippingAddressData->getRegionCode(),
-            'phone'         => $shippingAddressData->getPhone()
+            'phone'         => $shippingAddressData->getPhone(),
+            'phone2'         => $billingAddressData->getPhone2(),
         ];
 
         $billingAddress = [
@@ -52,7 +53,8 @@ class Create extends Base
             'postcode'      => $billingAddressData->getPostcode(),
             'neighborhood'  => $billingAddressData->getNeighborhood(),
             'region_code'   => $billingAddressData->getRegionCode(),
-            'phone'         => $billingAddressData->getPhone()
+            'phone'         => $billingAddressData->getPhone(),
+            'phone2'         => $billingAddressData->getPhone2(),
         ];
 
         foreach ($dataWrapper->getItemCollection() as $item) {
@@ -60,7 +62,12 @@ class Create extends Base
                 'id'    => $item->getId(),
                 'sku'   => $item->getSku(),
                 'price' => $item->getPrice(),
+                'unit_price' => $item->getUnitPrice(),
+                'tax_amount' => $item->getTaxAmount(),
+                'tax_percent' => $item->getTaxPercent(),
                 'shipment_type' => $item->getShipmentType(),
+                'shipment_date' => $item->getShipmentDate(),
+                'shipment_fee' => $item->getShipmentFee(),
                 'supplier_delivery_time' => $item->getSupplierDeliveryTime(),
                 'seller_id' => $item->getSellerId(),
                 'sku_supplier' => $item->getSkuSupplier(),
@@ -69,6 +76,11 @@ class Create extends Base
 
         return $this->prepareExport([
             'order_nr'         => $dataWrapper->getOrderNr(),
+            'payment_method'   => $dataWrapper->getPaymentMethod(),
+            'voucher_code'     => $dataWrapper->getVoucherCode(),
+            'gift_option'      => $dataWrapper->getGiftOption(),
+            'gift_message'     => $dataWrapper->getGiftMessage(),
+            'created_at'       => $dataWrapper->getCreatedAt(),
             'freight_cost'     => $dataWrapper->getFreightCost(),
             'item_collection'  => $itemCollection,
             'customer'         => $customer,

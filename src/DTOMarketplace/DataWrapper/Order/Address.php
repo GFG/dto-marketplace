@@ -14,6 +14,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getNeighborhood()
  * @method string getRegionCode()
  * @method string getPhone()
+ * @method string getPhone2()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setStreet(string $street)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setNumber(integer $number)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setComplement(string $complement)
@@ -22,6 +23,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setNeighborhood(string $neighborhood)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setRegionCode(string $regionCode)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setPhone(string $phone)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Address setPhone2(string $phone2)
  */
 class Address extends Base
 {
@@ -33,4 +35,5 @@ class Address extends Base
     private $neighborhood;
     private $regionCode;
     private $phone;
+    private $phone2;
 }
