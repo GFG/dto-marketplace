@@ -21,9 +21,18 @@ class Cancel extends Base
     {
         $dataWrapper = $this->getDataWrapper();
 
+        $itemCollection = [];
+
+        foreach ($dataWrapper->getItemCollection() as $item) {
+            $itemCollection[] = [
+                'id'    => $item->getId(),
+            ];
+        }
+
         return $this->prepareExport([
             'order_nr'          => $dataWrapper->getOrderNr(),
-            'venture_order_nr'  => $dataWrapper->getVentureOrderNr()
+            'venture_order_nr'  => $dataWrapper->getVentureOrderNr(),
+            'item_collection'   => $itemCollection,
         ]);
     }
 }
