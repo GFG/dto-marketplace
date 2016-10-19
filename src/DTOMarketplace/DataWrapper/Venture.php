@@ -13,6 +13,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getEmail()
  * @method string getCompanyName()
  * @method string getShopName()
+ * @method string getName()
  * @method string getPhone()
  * @method string getAddress1()
  * @method string getAddress2()
@@ -36,6 +37,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setEmail(string $email)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setCompanyName(string $companyName)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setShopName(string $shopName)
+ * @method \GFG\DTOMarketplace\DataWrapper\Venture setName(string $name)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setPhone(string $phone)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setAddress1(string $address1)
  * @method \GFG\DTOMarketplace\DataWrapper\Venture setAddress2(string $address2)
@@ -63,6 +65,7 @@ class Venture extends Base
     private $email;
     private $companyName;
     private $shopName;
+    private $name;
     private $phone;
     private $address1;
     private $address2;
