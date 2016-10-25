@@ -8,6 +8,7 @@ class Manager extends \GFG\DTOContext\Manager
      * @param string $contextName
      * @param string $dataWrapperName
      * @param array $dataWrapperData
+     * @return mixed
      */
     public function build(
         $contextName,
