@@ -48,12 +48,14 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $customercareCountry = 21;
         $status = 22;
         $sellerCustomInformation = [1,2,3];
+        $name = 'name';
 
         $this->dw->method('getIdIrisVenture')->willReturn($idIrisVenture);
         $this->dw->method('getFkCatalogSupplier')->willReturn($fkCatalogSupplier);
         $this->dw->method('getVentureCode')->willReturn($ventureCode);
         $this->dw->method('getId')->willReturn($id);
         $this->dw->method('getEmail')->willReturn($email);
+        $this->dw->method('getName')->willReturn($name);
         $this->dw->method('getCompanyName')->willReturn($companyName);
         $this->dw->method('getShopName')->willReturn($shopName);
         $this->dw->method('getPhone')->willReturn($phone);
@@ -84,6 +86,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                 'venture_code'              => $ventureCode,
                 'id'                        => $id,
                 'email'                     => $email,
+                'name'                      => $name,
                 'company_name'              => $companyName,
                 'shop_name'                 => $shopName,
                 'phone'                     => $phone,
