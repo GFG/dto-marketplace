@@ -28,6 +28,7 @@ class Create extends Base
             // extra fields after sellercenter (Venture === Seller)
             'id'                        => $dataWrapper->getId(),
             'email'                     => $dataWrapper->getEmail(),
+            'name'                      => $dataWrapper->getName(),
             'company_name'              => $dataWrapper->getCompanyName(),
             'shop_name'                 => $dataWrapper->getShopName(),
             'phone'                     => $dataWrapper->getPhone(),
