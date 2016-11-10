@@ -6,6 +6,8 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
 {
     const VENTURE_PRODUCT_CREATE           = 'venture.product.create';
     const VENTURE_PRODUCT_UPDATE           = 'venture.product.update';
+    const VENTURE_PRODUCT_RECATEGORIZATION = 'venture.product.recategorization';
+
     const VENTURE_PRODUCT_UPDATESTOCK      = 'venture.product.updatestock';
     const VENTURE_PRODUCT_UPDATEPRICE      = 'venture.product.updateprice';
     const VENTURE_PRODUCT_UPDATEIMAGE      = 'venture.product.updateimage';
@@ -35,6 +37,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     protected static $mappedContext = [
         self::VENTURE_PRODUCT_CREATE           => 'Venture\Product\Create',
         self::VENTURE_PRODUCT_UPDATE           => 'Venture\Product\Update',
+        self::VENTURE_PRODUCT_RECATEGORIZATION => 'Venture\Product\Recategorization',
         self::VENTURE_PRODUCT_UPDATESTOCK      => 'Venture\Product\UpdateStock',
         self::VENTURE_PRODUCT_UPDATEPRICE      => 'Venture\Product\UpdatePrice',
         self::VENTURE_PRODUCT_UPDATEIMAGE      => 'Venture\Product\UpdateImage',
