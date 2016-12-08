@@ -54,8 +54,7 @@ class Update extends Base
             'simple_collection'      => $simpleCollection,
             'supplier_delivery_time' => $dataWrapper->getSupplierDeliveryTime(),
             'shipment_type'          => $dataWrapper->getShipmentType(),
-            'status'                 => $dataWrapper->getStatus(),
-            'approval_status'        => $dataWrapper->getApprovalStatus()
+            'status'                 => $dataWrapper->getStatus()
         ]);
     }
 }
