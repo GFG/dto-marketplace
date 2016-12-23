@@ -22,6 +22,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method string getGiftOption()
  * @method string getGiftMessage()
  * @method string getCreatedAt()
+ * @method int getInstallmentCount()
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setOrderNr(string $orderNr)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setBobOrderId(string $bobOrderId)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setVentureOrderNr(string $ventureOrderNr)
@@ -38,6 +39,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setGiftOption(string $giftOption)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setGiftMessage(string $giftMessage)
  * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setCreatedAt(string $createdAt)
+ * @method \GFG\DTOMarketplace\DataWrapper\Order\Order setInstallmentCount(int $installmentCount)
  */
 class Order extends Base
 {
@@ -57,4 +59,5 @@ class Order extends Base
     private $giftOption;
     private $giftMessage;
     private $createdAt;
+    private $installmentCount;
 }

@@ -83,6 +83,7 @@ class Create extends Base
             'gift_message'     => $dataWrapper->getGiftMessage(),
             'created_at'       => $dataWrapper->getCreatedAt(),
             'freight_cost'     => $dataWrapper->getFreightCost(),
+            'installment_count'=> $dataWrapper->getInstallmentCount(),
             'item_collection'  => $itemCollection,
             'customer'         => $customer,
             'shipping_address' => $shippingAddress,

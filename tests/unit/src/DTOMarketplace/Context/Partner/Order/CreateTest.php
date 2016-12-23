@@ -43,6 +43,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $sellerId = 'si';
         $skuSupplier = 'ss';
         $bobOrderId = 'champs';
+        $installmentCount = 2;
 
 
         //items
@@ -179,6 +180,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                 'gift_message'    => $giftMessage,
                 'created_at'      => $createdAt,
                 'freight_cost'    => $freightCost,
+                'installment_count' => $installmentCount,
                 'item_collection' => [
                     0 =>[
                         'id'    => $idSalesOrderItem,
@@ -209,6 +211,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $this->dw->method('getGiftMessage')->willReturn($giftMessage);
         $this->dw->method('getCreatedAt')->willReturn($createdAt);
         $this->dw->method('getFreightCost')->willReturn($freightCost);
+        $this->dw->method('getInstallmentCount')->willReturn($installmentCount);
         $this->dw->method('getItemCollection')->willReturn($itemCollection);
         $this->dw->method('getCustomer')->willReturn($customerDataWrapper);
         $this->dw->method('getShippingAddress')->willReturn($shippingAddressDataWrapper);
