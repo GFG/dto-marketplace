@@ -23,6 +23,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     const VENTURE_ORDER_CONFIRMORDER       = 'venture.order.confirmorder';
 
     const VENTURE_POSTPAYMENT_HANDLED      = 'venture.postpayment.handled';
+    const VENTURE_POSTPAYMENT_READYTOSHIP  = 'venture.postpayment.readytoship';
     const VENTURE_POSTPAYMENT_SHIP         = 'venture.postpayment.ship';
     const VENTURE_POSTPAYMENT_DELIVER      = 'venture.postpayment.deliver';
     const VENTURE_POSTPAYMENT_FAILDELIVERY = 'venture.postpayment.faildelivery';
@@ -54,6 +55,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::VENTURE_ORDER_CONFIRMORDER       => 'Venture\Order\ConfirmOrder',
 
         self::VENTURE_POSTPAYMENT_HANDLED      => 'Venture\PostPayment\Handled',
+        self::VENTURE_POSTPAYMENT_READYTOSHIP  => 'Venture\PostPayment\ReadyToShip',
         self::VENTURE_POSTPAYMENT_SHIP         => 'Venture\PostPayment\Ship',
         self::VENTURE_POSTPAYMENT_DELIVER      => 'Venture\PostPayment\Deliver',
         self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailDelivery',
