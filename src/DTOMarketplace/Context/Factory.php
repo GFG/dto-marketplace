@@ -63,7 +63,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::VENTURE_POSTPAYMENT_FAILDELIVERY => 'Venture\PostPayment\FailDelivery',
         self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Cancel',
         self::VENTURE_POSTPAYMENT_RETURNED     => 'Venture\PostPayment\Returned',
-        self::VENTURE_POSTPAYMENT_RETURN_REJECTED => 'Venture\PostPayment\ReturnRejected',
+        self::VENTURE_POSTPAYMENT_RETURNREJECTED => 'Venture\PostPayment\ReturnRejected',
 
         self::VENTURE_ENTITY_GET               => 'Venture\Entity\Get',
         self::VENTURE_ENTITY_CREATE            => 'Venture\Entity\Create',
