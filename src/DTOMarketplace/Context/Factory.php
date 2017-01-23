@@ -29,7 +29,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     const VENTURE_POSTPAYMENT_FAILDELIVERY = 'venture.postpayment.faildelivery';
     const VENTURE_POSTPAYMENT_CANCEL       = 'venture.postpayment.cancel';
     const VENTURE_POSTPAYMENT_RETURNED     = 'venture.postpayment.returned';
-    const VENTURE_POSTPAYMENT_RETURN_REJECTED = 'venture.postpayment.returnrejected';
+    const VENTURE_POSTPAYMENT_RETURNREJECTED = 'venture.postpayment.returnrejected';
 
     const VENTURE_ENTITY_GET               = 'venture.entity.get';
     const VENTURE_ENTITY_CREATE            = 'venture.entity.create';
