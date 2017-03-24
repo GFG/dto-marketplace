@@ -30,6 +30,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
     const VENTURE_POSTPAYMENT_CANCEL       = 'venture.postpayment.cancel';
     const VENTURE_POSTPAYMENT_RETURNED     = 'venture.postpayment.returned';
     const VENTURE_POSTPAYMENT_RETURNREJECTED = 'venture.postpayment.returnrejected';
+    const VENTURE_POSTPAYMENT_INTERMEDIATESTATUS = 'venture.postpayment.intermediatestatus';
 
     const VENTURE_ENTITY_GET               = 'venture.entity.get';
     const VENTURE_ENTITY_CREATE            = 'venture.entity.create';
@@ -64,6 +65,7 @@ abstract class Factory extends \GFG\DTOContext\Factory\Base
         self::VENTURE_POSTPAYMENT_CANCEL       => 'Venture\PostPayment\Cancel',
         self::VENTURE_POSTPAYMENT_RETURNED     => 'Venture\PostPayment\Returned',
         self::VENTURE_POSTPAYMENT_RETURNREJECTED => 'Venture\PostPayment\ReturnRejected',
+        self::VENTURE_POSTPAYMENT_INTERMEDIATESTATUS => 'Venture\PostPayment\IntermediateStatus',
 
         self::VENTURE_ENTITY_GET               => 'Venture\Entity\Get',
         self::VENTURE_ENTITY_CREATE            => 'Venture\Entity\Create',
