@@ -8,6 +8,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @SuppressWarnings(PHPMD.UnusedPrivateField)
  * @method string getSku()
  * @method string getPartnerSku()
+ * @method string getVentureProductId()
  * @method string getVariation()
  * @method int getQuantity()
  * @method string getEan()
@@ -15,6 +16,7 @@ use GFG\DTOContext\DataWrapper\Base;
  * @method array getAttributes()
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setSku(string $sku)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setPartnerSku(string $partnerSku)
+ * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setVentureProductId(string $ventureProductId)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setVariation(string $variation)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setQuantity(int $quantity)
  * @method \GFG\DTOMarketplace\DataWrapper\Catalog\Simple setEan(string $ean)
@@ -25,6 +27,7 @@ class Simple extends Base
 {
     private $sku;
     private $partnerSku;
+    private $ventureProductId;
     private $variation;
     private $quantity;
     private $ean;

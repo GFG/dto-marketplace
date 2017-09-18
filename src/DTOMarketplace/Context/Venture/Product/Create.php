@@ -3,6 +3,7 @@
 namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 use GFG\DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\DataWrapper\Catalog\Simple;
 
 class Create extends Base
 {
@@ -23,10 +24,12 @@ class Create extends Base
         $simpleCollection = [];
         $imageCollection  = [];
 
+        /** @var Simple $simple */
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
                 'sku'         => $simple->getSku(),
                 'partner_sku' => $simple->getPartnerSku(),
+                'venture_product_id' => $simple->getVentureProductId(),
                 'variation'   => $simple->getVariation(),
                 'quantity'    => $simple->getQuantity(),
                 'ean'         => $simple->getEan(),
