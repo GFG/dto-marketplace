@@ -25,7 +25,6 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
     public function testExportContextData()
     {
-
         //dataWrappers 
         $image            = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Catalog\Image', 
@@ -41,6 +40,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
         //config
         $sku              = 'sku';
+        $ventureProductId = 'some product id';
         $name             = 'Product name';
         $description      = 'Description';
         $brand            = 'Brand';
@@ -83,6 +83,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
                     [
                         'sku'         => $simpleSku,
                         'partner_sku' => $simpleSku,
+                        'venture_product_id' => $ventureProductId,
                         'variation'   => $variation,
                         'ean'         => $ean,
                         'attributes'  => $attributes,
@@ -97,6 +98,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
 
         $simple->method('getSku')->willReturn($simpleSku);
         $simple->method('getPartnerSku')->willReturn($simpleSku);
+        $simple->method('getVentureProductId')->willReturn($ventureProductId);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getEan')->willReturn($ean);
         $simple->method('getAttributes')->willReturn($attributes);

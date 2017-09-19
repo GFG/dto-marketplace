@@ -3,6 +3,7 @@
 namespace GFG\DTOMarketplace\Context\Venture\Product;
 
 use GFG\DTOMarketplace\Context\Base;
+use GFG\DTOMarketplace\DataWrapper\Catalog\Simple;
 
 class Update extends Base
 {
@@ -19,15 +20,16 @@ class Update extends Base
      */
     public function exportContextData()
     {
-
         $dataWrapper      = $this->getDataWrapper();
         $simpleCollection = [];
         $imageCollection  = [];
 
+        /** @var Simple $simple */
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
                 'sku'         => $simple->getSku(),
                 'partner_sku' => $simple->getPartnerSku(),
+                'venture_product_id' => $simple->getVentureProductId(),
                 'variation'   => $simple->getVariation(),
                 'ean'         => $simple->getEan(),
                 'attributes'  => $simple->getAttributes(),
