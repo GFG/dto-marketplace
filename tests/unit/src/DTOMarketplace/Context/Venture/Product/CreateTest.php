@@ -39,16 +39,13 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
         //config
         $sku             = 'sku config';
-        $skuSimple       = 'sku simple';
+        $ventureProductId = 'some product id';
         $name            = 'name';
         $description     = 'description';
         $brand           = 'brand'; 
         $price           = 100.00;
-        $quantity        = 1;
-        $ean             = 'ean';
         $url             = 'http://site.com/image.jpg';
         $position        = 1;
-        $variation       = 'variation';
         $specialPrice    = 50.00;
         $specialFromDate = '2015-01-01';
         $specialToDate   = '2015-02-01';
@@ -70,12 +67,13 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             [
                 'sku'         => $skuSimple,
                 'partner_sku' => $skuSimple,
+                'venture_product_id' => $ventureProductId,
                 'variation'   => $variation,
                 'quantity'    => $quantity,
                 'ean'         => $ean,
                 'attributes'  => null
             ]
-        ]; 
+        ];
 
 
         //simple
@@ -106,6 +104,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 
         $simple->method('getSku')->willReturn($skuSimple);
         $simple->method('getPartnerSku')->willReturn($skuSimple);
+        $simple->method('getVentureProductId')->willReturn($ventureProductId);
         $simple->method('getVariation')->willReturn($variation);
         $simple->method('getQuantity')->willReturn($quantity);
         $simple->method('getEan')->willReturn($ean);
