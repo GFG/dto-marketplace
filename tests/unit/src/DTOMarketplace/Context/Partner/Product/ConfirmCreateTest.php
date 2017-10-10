@@ -30,6 +30,7 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
         $sku        = 'sku';
         $partnerSku = 'partner sku';
         $simpleSku  = 'simple sku';
+        $ventureProductId  = 'venture product id'; 
         $partnerSimpleSku  = 'partner simple sku';
         $simple     = Mock::create(
             'GFG\DTOMarketplace\DataWrapper\Catalog\Simple', 
@@ -38,6 +39,7 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
 
         $simple->method('getSku')->willReturn($simpleSku);
         $simple->method('getPartnerSku')->willReturn($partnerSimpleSku);
+        $simple->method('getVentureProductId')->willReturn($ventureProductId);
 
         $this->dw->method('getSimpleCollection')->willReturn([$simple]);
         $this->dw->method('getSku')->willReturn($sku);
@@ -53,8 +55,9 @@ class ConfirmCreateTest extends \PHPUnit_Framework_TestCase
                 'partner_sku' => $partnerSku,
                 'simple_collection' => [
                     [
-                        'sku' => $simpleSku,
-                        'partner_sku' => $partnerSimpleSku
+                        'sku'                => $simpleSku,
+                        'partner_sku'        => $partnerSimpleSku,
+                        'venture_product_id' => $ventureProductId
                     ]
                 ]
             ]
