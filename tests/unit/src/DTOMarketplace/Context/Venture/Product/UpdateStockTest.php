@@ -12,7 +12,7 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         $this->dw = Mock::create(
-            'GFG\DTOMarketplace\DataWrapper\Catalog\Config', 
+            'GFG\DTOMarketplace\DataWrapper\Catalog\Config',
             $this
         );
         $this->dwSimple = Mock::create(
@@ -21,7 +21,7 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->context = new UpdateStock($this->dw);
-    } 
+    }
 
     public function testGetHttpMethod()
     {
@@ -44,15 +44,17 @@ class UpdateStockTest extends \PHPUnit_Framework_TestCase
                 'simple_collection' => [[
                     'sku' => $skuSimple,
                     'partner_sku' => null,
-                    'quantity'   => $quantity
+                    'quantity'   => $quantity,
+                    'venture_product_id' => 2
                 ]]
             ]
         ];
 
         $this->dwSimple->method('getSku')->willReturn($skuSimple);
         $this->dwSimple->method('getQuantity')->willReturn($quantity);
+        $this->dwSimple->method('getVentureProductId')->willReturn(2);
 
-        $this->dw->method('getSku')->willReturn('sku config'); 
+        $this->dw->method('getSku')->willReturn('sku config');
         $this->dw->method('getSimpleCollection')->willReturn([$this->dwSimple]);
 
         $this->assertSame($exportedData, $this->context->exportContextData());

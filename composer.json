@@ -12,7 +12,7 @@
         "phploc/phploc": "@stable",
         "sebastian/phpcpd": "@stable",
         "pdepend/pdepend" : "@stable",
-        "phpunit/phpunit": "@stable",
+        "phpunit/phpunit": "~4.6.0",
         "phpunit/php-invoker": "@stable",
         "phpmd/phpmd" : "@stable",
         "squizlabs/php_codesniffer": "@stable",
