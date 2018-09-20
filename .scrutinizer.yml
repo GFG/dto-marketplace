@@ -23,7 +23,7 @@ build:
         before:
             - "sudo composer self-update"
         override:
-            - "composer install --no-dev --no-interaction --prefer-dist"
+            - "composer install --no-interaction --prefer-dist"
     environment:
         php: '5.5.25'
         mysql: false
@@ -37,7 +37,7 @@ build:
     tests:
         override:
             -
-                command: 'phpunit -c tests/ --colors --coverage-clover=clover.xml tests/unit'
+                command: './vendor/bin/phpunit -c tests/ --colors --coverage-clover=clover.xml tests/unit'
                 coverage:
                     file: 'clover.xml'
                     format: 'php-clover'
