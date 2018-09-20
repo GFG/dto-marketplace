@@ -19,14 +19,17 @@ class UpdateStock extends Base
      */
     public function exportContextData()
     {
+        /** @var \GFG\DTOMarketplace\DataWrapper\Catalog\Config $dataWrapper */
         $dataWrapper      = $this->getDataWrapper();
         $simpleCollection = [];
 
+        /** @var \GFG\DTOMarketplace\DataWrapper\Catalog\Simple $simple */
         foreach ($dataWrapper->getSimpleCollection() as $simple) {
             $simpleCollection[] = [
-                'sku'           => $simple->getSku(),
-                'partner_sku'   => $simple->getPartnerSku(),
-                'quantity'      => $simple->getQuantity(),
+                'sku'                => $simple->getSku(),
+                'partner_sku'        => $simple->getPartnerSku(),
+                'quantity'           => $simple->getQuantity(),
+                'venture_product_id' => $simple->getVentureProductId(),
             ];
         }
 
